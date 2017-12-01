@@ -1,0 +1,166 @@
+#Menu {
+  overflow: hidden;
+  background-color: #333;
+  border : 3px solid #696969;
+  
+}
+
+#Menu a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#Menu a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#Menu a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.login
+{
+    text-align: center;
+    color: black;
+    margin-right: 20px;
+    font-weight: bold;
+    margin-left: 77%;
+    padding-left: 2em;
+    padding-right: 2em;
+    background-color : white;
+}
+
+
+footer{  
+    bottom: 0;
+    padding: 1em;
+    color: white;
+    background-color: #333;
+    clear: left;
+    border : 3px solid #696969;
+}
+
+#textfoot
+{
+padding-right:10em;
+padding-left:0em;
+}
+
+
+body{
+background-color : #BBD2E1;
+position:relative;
+}
+
+article{
+background-color:#A9A9A9;
+border : 3px solid #696969;
+padding-bottom:2%;
+padding-top:2%;
+text-align:center;
+}
+
+
+/*LISTE PRODUIT*/
+
+#ajouter a
+{
+background-color : #4CAF50;
+border : 1px solid white;
+padding:7px 80px;
+color:white;
+text-decoration :none;
+font-weight:bold;
+}
+
+#ajouter a:hover
+{
+background-color: white;
+font-weight:bold;
+color:black;
+}
+
+#lienprod
+{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+#lienprod a
+{
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 20px 0px;
+    width: 700px;
+    border-radius: 10px;
+    display: inline-block;
+    
+    
+    
+}
+
+#retourListProd
+{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+#retourListProd a
+{
+    background-color : #4CAF50;
+    border : 1px solid white;  
+    padding:7px 8px;
+    color:white;
+    text-decoration :none;
+    font-weight:bold;
+}
+
+#retourListProd a:hover
+{
+    background-color: white;
+    font-weight:bold;
+    color:black;
+}
+
+#quantiteProdStock p
+{
+    border : 1px solid black;
+    margin-left: 700px;
+    margin-right:100px;
+    background-color:#BBD2E1;
+    color:black;
+}
+
+.listeproduit
+{
+    
+    background-color: rgba(240, 255, 247, 0.34);
+    border : 2px solid white;
+}
+
+
+/*PANIER*/
+
+#prodPanier a
+{
+    background-color:   #4CAF50;
+    color : white;
+    text-decoration: none;
+    border : 1px solid black;
+    padding: 10px 15px;
+}
+
+#prodPanier
+{
+    padding-top:1em;
+    padding-bottom:1em;
+}
