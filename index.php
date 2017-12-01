@@ -2,13 +2,7 @@
 session_start();
 ?>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="Css/style.css">
-    </head>      
-    <body>
+
 <?php
         // put your code here
     
@@ -20,12 +14,7 @@ session_start();
         
         $_SESSION['pseudoUtil']='Rubis';
         $_SESSION['idUtil']='2';
-       echo $_SESSION['idUtil'];
         ?>
         
  
 
-
-    </body>
-    
-</html>
