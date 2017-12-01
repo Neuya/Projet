@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html>
-    
-    <body>
 
         <?php
         
@@ -16,6 +12,5 @@
             echo "<div id='ajouter'><a href='index.php?action=createdPanier&idProduit=$vIdProduit'>Ajouter</a></div>";
             echo "<div id='retourListProd'><a href='index.php?action=readAll&controller=produit'>Retour à la liste des produits</a></div>";
         ?>
-    </body>
-</html>
+ 
 

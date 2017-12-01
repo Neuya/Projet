@@ -14,7 +14,8 @@ session_start();
         
         $_SESSION['pseudoUtil']='Rubis';
         $_SESSION['idUtil']='2';
-        ?>
+       
+ ?>
         
  
 

@@ -39,5 +39,8 @@ class Conf {
       return self ::$databases['password'];
   }
    
+  
+  
+   
 }
 ?>

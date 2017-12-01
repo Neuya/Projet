@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
 
-    <body>
         <?php
         foreach ($tab_v as $v){
             $vNomProduit= htmlspecialchars($v->getNomProduit());
@@ -17,6 +14,3 @@
             echo "</div>";
         }
         ?>
-    </body>
-</html>
-

@@ -3,11 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <title><?php echo $pagetitle; ?></title>
-        <link rel="stylesheet" href="../Css/style.css">
+        <link rel="stylesheet" href="Css/style.css">
     </head>
     <body>
         <div id="Menu">
-			<a class="active" href="index.php?action=readAll">Accueil</a>
+            <a class="active" href="index.php?">Accueil</a>
             <a href="index.php?action=readAll" >Présentation du produit</a>
             <a href="index.php?action=readAll&controller=produit" >Liste des produits</a>
             <a href="index.php?action=readAll&controller=utilisateur" >Gestion du compte</a>
