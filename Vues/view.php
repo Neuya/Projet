@@ -13,6 +13,7 @@
 
             <a href="index.php?action=readAll&controller=panier" >Mon Panier</a>
 
+
             <a href="index.php?action=readAll&controller=commande">Mes Commandes</a>
             <?php echo "<p class='login'>Bienvenue ". $_SESSION['pseudoUtil'] ."</p>"; ?>
         </div>
