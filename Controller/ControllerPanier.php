@@ -14,7 +14,7 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
     
 		public static function errorPanier(){
 			$pagetitle="Erreur";
-			$controller="produit";
+			$controller="panier";
 			$view="error";
 			require File::build_path(array("Vues","view.php"));
 		}
@@ -22,14 +22,11 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
 		
 	
 		public static function createdPanier(){
-			/*$produit = new ModelPanier($_GET['id'],$_GET['nomproduit'],$_GET['couleur']);
-			$produit->save();*/
                         $produit_panier= new ModelPanier($_GET['idProduit'],$_SESSION['idUtil'],1);
                         $produit_panier->save();
 			$pagetitle="Produit ajouté";
 			$controller="panier";
 			$view="created";
-			//$tab_v = ModelProduit::getAllProduit();
 			require File::build_path(array("Vues","view.php"));
 		}
                 

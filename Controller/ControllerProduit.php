@@ -1,9 +1,9 @@
 <?php
-require_once (File::build_path(array('Modele','ModelProduit.php'))); // SALUT C MOA
+require_once (File::build_path(array('Modele','ModelProduit.php'))); 
 
 
 
-//SALUT GRAND PEDZ C OIM 
+
 
 
     class ControllerProduit{

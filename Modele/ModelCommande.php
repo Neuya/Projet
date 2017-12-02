@@ -58,7 +58,7 @@ require_once File::build_path(array("Modele","Model.php"));
     
     public static function getAllCommande($îdUtili)
     {
-      $rep = Model::$pdo->query("SELECT idCommande FROM Panier WHERE idUtil=$idUtili");
+      $rep = Model::$pdo->query("SELECT idCommande FROM Commande WHERE idUtil=$idUtili");
       $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelCommande');
       $tab_obj = $rep->fetchAll();
       return $tab_obj;
@@ -71,7 +71,13 @@ require_once File::build_path(array("Modele","Model.php"));
       return $tab_obj;
     }
 
-    
+    public static function getIdCommandeDeUtil($idUtili)
+    {
+        $rep = Model::$pdo->query("SELECT COUNT(DISTINCT idCommande) FROM Commande WHERE idUtil=$idUtili");
+        $nombreCom = $rep->fetch();
+        $rep->closeCursor();
+        return $nombreCom;
+    }
     
     
     

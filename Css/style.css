@@ -103,9 +103,6 @@ color:black;
     width: 700px;
     border-radius: 10px;
     display: inline-block;
-    
-    
-    
 }
 
 #retourListProd
@@ -163,4 +160,21 @@ color:black;
 {
     padding-top:1em;
     padding-bottom:1em;
+}
+
+.bouton_cliquable a
+{
+background-color : #4CAF50;
+border : 1px solid white;
+padding:7px 80px;
+color:white;
+text-decoration :none;
+font-weight:bold;
+}
+
+.bouton_cliquable a:hover
+{
+background-color: white;
+font-weight:bold;
+color:black;
 }

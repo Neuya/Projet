@@ -4,7 +4,7 @@ require_once (File::build_path(array('Modele','ModelCommande.php')));
     class ControllerCommande{
 		
 		public static function readAll() {
-			$tab_panier = ModelPanier::getAllCommande($_SESSION['idUtil']);
+			$tab_panier = ModelCommande::getAllCommande($_SESSION['idUtil']);
 			$pagetitle="Liste des produits de vos commandes";
 			$controller="commande";
 			$view="list";
@@ -21,15 +21,13 @@ require_once (File::build_path(array('Modele','ModelCommande.php')));
     
 		
 	
-		public static function createdPanier(){
-			/*$produit = new ModelPanier($_GET['id'],$_GET['nomproduit'],$_GET['couleur']);
-			$produit->save();*/
-                        $produit_panier= new ModelPanier($_GET['idProduit'],$_SESSION['idUtil'],1);
-                        $produit_panier->save();
-			$pagetitle="Produit ajouté";
-			$controller="panier";
+		public static function created(){
+                        $idCom=ModelCommande::getIdCommandeDeUtil($_SESSION['idUtil']);
+                        $produit_commande= new ModelCommande($idCom,$_GET['idProduit'],$_SESSION['idUtil'],1);
+                        $produit_commande->save();
+			$pagetitle="Produits ajoutés a votre commande";
+			$controller="commande";
 			$view="created";
-			//$tab_v = ModelProduit::getAllProduit();
 			require File::build_path(array("Vues","view.php"));
 		}
                 
