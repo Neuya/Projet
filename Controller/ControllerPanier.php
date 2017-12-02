@@ -3,7 +3,7 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
 
     class ControllerPanier{
 		
-		public static function readAllPanier() {
+		public static function readAll() {
 			$tab_panier = ModelPanier::getAllProduitDuPanier($_SESSION['idUtil']);
 			$pagetitle="Liste des produits de votre panier";
 			$controller="panier";
