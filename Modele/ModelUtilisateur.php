@@ -60,12 +60,12 @@
 		
 		//Constructeur
 		public function __construct($id = NULL, $nom = NULL, $pseudo = NULL, $mdp = NULL, $prenom = NULL, $age = NULL, $ville = NULL){
-			if (!is_null($id) && !is_null($nom) && !is_null($pseudo) && !is_null($mdp) && !is_null($prenom) && !is_null($age) && !is_null($ville)) {
+			if (!is_null($nom) && !is_null($pseudo) && !is_null($mdp) && !is_null($prenom) && !is_null($age) && !is_null($ville)) {
 				$this->idUtil = $id;
 				$this->nomUtil = $nom;
 				$this->pseudoUtil = $pseudo;
                                 $this->mdpUtil = $mdp;
-				$this->prenomUtil = $prenomnom;
+				$this->prenomUtil = $prenom;
 				$this->ageUtil = $age;
                                 $this->villeUtil = $ville;
 			}
@@ -103,17 +103,19 @@
 			$sql = "INSERT INTO Utilisateur (idUtil,nomUtil,prenomUtil,mdpUtil,pseudoUtil,ageUtil,villeUtil) VALUES (:id,:nom,:prenom,:mdp,:pseudo,:age,:ville)";
 			$req_prep = Model::$pdo->prepare($sql);
 			$values = array(
-                                "id" => NULL,
+                                "id" => $this->idUtil,
 				"nom" => $this->nomUtil,
-				"pseudo" => $this->pseudoUtil,
                                 "prenom" => $this->prenomUtil,
                                 "mdp" => $this->mdpUtil,
+                                "pseudo" => $this->pseudoUtil,
 				"age" => $this->ageUtil,
                                 "ville" => $this->villeUtil,
                                 
 			);
 			$req_prep->execute($values);
 		}
+                
+              
 		public function update(){
 		}
 	

@@ -6,11 +6,11 @@
 					<p>     
                         <input type='hidden' name='action' value='created'>
                         <input type='hidden' name='controller' value='utilisateur'>
-						<label for="id">Nom</label> :
+						<label for="nom">Nom</label> :
 						<input type="text" placeholder="Ex : jean" name="nom" id="nom" required/>
 					</p>
 					<p>
-						<label for="nom">Prenom</label> :
+						<label for="prenom">Prenom</label> :
 						<input type="text" placeholder="Ex : Stylo" name="prenom" id="prenom" required/>
 					</p>
                                         <p>
@@ -18,7 +18,7 @@
 						<input type="text" placeholder="Ex : Rubis" name="pseudo" id="pseudo" required/>
 					</p>
 					<p>
-						<label for="couleur">age</label> :
+						<label for="age">age</label> :
 						<input type="text" placeholder="Ex : bleu" name="age" id="age" required/>
 					</p>
                                         <p>

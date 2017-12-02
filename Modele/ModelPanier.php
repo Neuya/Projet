@@ -44,12 +44,12 @@
     
     public static function getAllProduitDuPanier($idUtili){
       $rep = Model::$pdo->query("SELECT idProduit,Quantite FROM Panier WHERE idUtil=$idUtili");
-      $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelPanier');
+      $rep->setFetchMode(PDO::FETCH_CLASS,'ModelPanier');
       $tab_obj = $rep->fetchAll();
       return $tab_obj;
     }
 
-    public function deleteProduitById($idProduit,$idUtili){
+    public static function deleteProduitById($idProduit,$idUtili){
       $rep = Model::$pdo->query("DELETE FROM Panier WHERE idProduit=$idProduit AND idUtil=$idUtili");
 
     }

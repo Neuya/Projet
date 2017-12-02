@@ -2,6 +2,7 @@
 
 
 require_once (File::build_path(array('Modele','ModelUtilisateur.php')));
+require_once (File::build_path(array('lib','Security.php')));
 
     class ControllerUtilisateur{
     
@@ -59,7 +60,8 @@ require_once (File::build_path(array('Modele','ModelUtilisateur.php')));
 		
 		public static function created(){
 			if($_GET['mdp']===$_GET['mdp2']){
-				$utilisateur = new ModelUtilisateur(NULL,$_GET['nom'],$_GET['pseudo'],$_GET['mdp'],$_GET['prenom'],$_GET['age'],$_GET['ville']);
+                                $mdpChiffrer=Security::chiffrer($_GET['mdp']);
+				$utilisateur = new ModelUtilisateur(NULL,$_GET['nom'],$_GET['pseudo'],$mdpChiffrer,$_GET['prenom'],$_GET['age'],$_GET['ville']);
 				$utilisateur->save();
 				$pagetitle="votre compte à bien été crée";
 				$controller="utilisateur";
@@ -73,6 +75,17 @@ require_once (File::build_path(array('Modele','ModelUtilisateur.php')));
 				require File::build_path(array("Vues","view.php"));
 			}
 		}
+                public static function update(){}
+                public static function updated(){}
+                
+                public static function connect(){
+                    $pagetitle="Connection";
+                    $controller="site";
+                    $view="connect";
+                    require File::build_path(array("Vues","view.php"));
+                }
+                
+                public static function connected(){}
        /* 
         create
         
