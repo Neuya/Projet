@@ -33,14 +33,14 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
                 public static function incrementeQuant()
                 {
                     ModelPanier::incrementeQuantite($_GET["idProduit"],$_SESSION['idUtil']);
-                    ControllerPanier::readAllPanier();
+                    ControllerPanier::readAll();
                     
                 }
                 
                 public static function decrementeQuant()
                 {
                     ModelPanier::decrementeQuantite($_GET["idProduit"],$_SESSION['idUtil']);
-                    ControllerPanier::readAllPanier();
+                    ControllerPanier::readAll();
                 }
 	
 		public static function deleted(){
