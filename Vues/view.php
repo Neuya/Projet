@@ -10,11 +10,13 @@
             <a class="active" href="index.php?">Accueil</a>
             <a href="index.php?action=readAll&controller=produit" >Liste des produits</a>
             <a href="index.php?action=readAll&controller=utilisateur" >Gestion du compte</a>
-<<<<<<< HEAD
+
             <a href="index.php?action=readAll&controller=panier" >Mon Panier</a>
-=======
+
             <a href="index.php?action=readAll&controller=panier" >Mon panier</a>
->>>>>>> ee031dd107e9f15244c097429401ec189b05eb37
+
+            <a href="index.php?action=readAll&controller=panier">Mon panier</a>
+
             <a href="index.php?action=readAll&controller=commande">Mes Commandes</a>
             <?php echo "<p class='login'>Bienvenue ". $_SESSION['pseudoUtil'] ."</p>"; ?>
         </div>

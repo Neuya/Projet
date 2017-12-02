@@ -115,7 +115,22 @@
 			$req_prep->execute($values);
 		}
                 
-              
+                public function checkPseudo($login){
+                        $rep = Model::$pdo->query("SELECT * FROM Utilisateur WHERE idUtil=$idUtil");
+			$rep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
+			$tab_obj = $rep->fetchAll();
+                        if (empty($tab_obj))
+                             return false;
+			return $tab_obj[0]; 
+                    
+                }
+                
+                public function checkPassword($login,$mot_de_passe_chiffre){
+                    
+                    
+                }
+                
+                
 		public function update(){
 		}
 	

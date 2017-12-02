@@ -7,6 +7,8 @@ if(empty($tab_panier))
 {
     echo "Il n'y a aucun article dans votre panier, il vous faut d'abord en ajouter via la liste des produits.";
 }
+ else {
+    
 
 $TotalPanier = 0;
 
@@ -30,5 +32,5 @@ foreach ($tab_panier as $v)
 
 echo "<p>Total de votre panier : $TotalPanier</p>";
 echo "<div class='bouton_cliquable'><a href='index.php?action=create&controller=commande'>Acheter</a></div>";
-
+}
 ?>
