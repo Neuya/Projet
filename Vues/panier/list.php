@@ -23,14 +23,15 @@ foreach ($tab_panier as $v)
     $prixSs = $v_Produit->getPrixProd() * $v->getQuantite();
     $TotalPanier=$TotalPanier+$prixSs;
     
+    echo "<article>";
     echo "<div id='prodPanier'><a href='index.php?action=read&id=$IDurl'>$v_nomProduit de couleur $v_couleurProduit quantité : $v_QuantitePanier Sous total : $prixSs €</a></div>";
     echo "<div id='retirerPanier'><a href='index.php?action=deleted&controller=panier&idProduit=$IDurl'>Retirer du panier</a></div>";
     echo "<a href='index.php?action=incrementeQuant&controller=panier&idProduit=$IDurl'>+++++++</a>";
     echo "<br><a href='index.php?action=decrementeQuant&controller=panier&idProduit=$IDurl'>------------</a>";
-   
+    echo "</article>";
 }
 
-echo "<p>Total de votre panier : $TotalPanier</p>";
+echo "<p>Total de votre panier : $TotalPanier €</p>";
 echo "<div class='bouton_cliquable'><a href='index.php?action=create&controller=commande'>Acheter</a></div>";
 }
 ?>

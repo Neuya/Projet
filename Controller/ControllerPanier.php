@@ -18,11 +18,19 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
 			$view="error";
 			require File::build_path(array("Vues","view.php"));
 		}
-    
+                
+                public static function create()
+                {
+                    $v=ModelProduit::getProduitbyId($_GET['idProduit']);
+                    $pagetitle="Confirmation de l'ajout";
+                    $controller="panier";
+                    $view="create";
+                    require File::build_path(array("Vues","view.php"));
+                }
 		
 	
 		public static function created(){
-                        $produit_panier= new ModelPanier($_GET['idProduit'],$_SESSION['idUtil'],1);
+                        $produit_panier= new ModelPanier($_GET['idProduit'],$_SESSION['idUtil'],$_GET['quantite']);
                         $produit_panier->save();
 			$pagetitle="Produit ajouté";
 			$controller="panier";

@@ -105,6 +105,12 @@ color:black;
     display: inline-block;
 }
 
+#lienprod a:hover{
+    background-color: white;
+font-weight:bold;
+color:black;
+}
+
 #retourListProd
 {
     padding-top: 1em;
@@ -144,6 +150,13 @@ color:black;
     border : 2px solid white;
 }
 
+#quantiteAjout
+{
+    width:70px;
+    text-align :center;
+    padding-left : 1em;
+}
+
 
 /*PANIER*/
 
@@ -173,6 +186,23 @@ font-weight:bold;
 }
 
 .bouton_cliquable a:hover
+{
+background-color: white;
+font-weight:bold;
+color:black;
+}
+
+.bouton_cliquable input
+{
+background-color : #4CAF50;
+border : 1px solid white;
+padding:7px 80px;
+color:white;
+text-decoration :none;
+font-weight:bold;
+}
+
+.bouton_cliquable input:hover
 {
 background-color: white;
 font-weight:bold;
