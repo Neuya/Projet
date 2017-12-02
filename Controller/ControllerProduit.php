@@ -1,5 +1,5 @@
 <?php
-require_once (File::build_path(array('Modele','ModelProduit.php')));
+require_once (File::build_path(array('Modele','ModelProduit.php'))); // SALUT C MOA
 
 
 
