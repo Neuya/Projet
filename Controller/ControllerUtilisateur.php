@@ -59,8 +59,8 @@ require_once (File::build_path(array('Modele','ModelUtilisateur.php')));
 		
 		public static function created(){
 			if($_GET['mdp']===$_GET['mdp2']){
-				$produit = new ModelUtilisateur($_GET['nom'],$_GET['mdp'],$_GET['prenom'],$_GET['age'],$_GET['ville']);
-				$produit->save();
+				$utilisateur = new ModelUtilisateur(NULL,$_GET['nom'],$_GET['pseudo'],$_GET['mdp'],$_GET['prenom'],$_GET['age'],$_GET['ville']);
+				$utilisateur->save();
 				$pagetitle="votre compte à bien été crée";
 				$controller="utilisateur";
 				$view="created";

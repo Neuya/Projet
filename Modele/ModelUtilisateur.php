@@ -100,15 +100,17 @@
                 
 		//modif le 1/12/17
 		public function save(){
-			$sql = "INSERT INTO Utilisateur (idUtil,nomUtil,pseudoUtil,prenomUtil,mdpUtil,ageUtil,villeUtil) VALUES (NULL,:nom,:pseudo,:prenom,:mdp,:age,;ville)";
+			$sql = "INSERT INTO Utilisateur (idUtil,nomUtil,prenomUtil,mdpUtil,pseudoUtil,ageUtil,villeUtil) VALUES (:id,:nom,:prenom,:mdp,:pseudo,:age,:ville)";
 			$req_prep = Model::$pdo->prepare($sql);
 			$values = array(
+                                "id" => NULL,
 				"nom" => $this->nomUtil,
 				"pseudo" => $this->pseudoUtil,
-                "prenom" => $this->prenomUtil,
-                "mdp" => $this->mdpUtil,
+                                "prenom" => $this->prenomUtil,
+                                "mdp" => $this->mdpUtil,
 				"age" => $this->ageUtil,
-                "ville" => $this->villeUtil,
+                                "ville" => $this->villeUtil,
+                                
 			);
 			$req_prep->execute($values);
 		}

@@ -10,7 +10,7 @@
             <a class="active" href="index.php?">Accueil</a>
             <a href="index.php?action=readAll&controller=produit" >Liste des produits</a>
             <a href="index.php?action=readAll&controller=utilisateur" >Gestion du compte</a>
-            <a href="index.php?action=readAllPanier&controller=panier" >Mon panier</a>
+            <a href="index.php?action=readAll&controller=panier" >Mon Panier</a>
             <a href="index.php?action=readAll&controller=commande">Mes Commandes</a>
             <?php echo "<p class='login'>Bienvenue ". $_SESSION['pseudoUtil'] ."</p>"; ?>
         </div>

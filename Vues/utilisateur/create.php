@@ -2,7 +2,7 @@
 	<body>
 		<form method="get" action='index.php'>
 			<fieldset>      
-				<legend>Créer votre produit</legend>
+				<legend>Créer votre compte</legend>
 					<p>     
                         <input type='hidden' name='action' value='created'>
                         <input type='hidden' name='controller' value='utilisateur'>
@@ -12,6 +12,10 @@
 					<p>
 						<label for="nom">Prenom</label> :
 						<input type="text" placeholder="Ex : Stylo" name="prenom" id="prenom" required/>
+					</p>
+                                        <p>
+						<label for="pseudo">Pseudonyme</label> :
+						<input type="text" placeholder="Ex : Rubis" name="pseudo" id="pseudo" required/>
 					</p>
 					<p>
 						<label for="couleur">age</label> :
