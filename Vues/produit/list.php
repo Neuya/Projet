@@ -10,7 +10,7 @@
             
             
             echo "<div class='listeproduit'>";
-            echo "<div id='lienprod'><a href='index.php?action=read&id=$IDurl'>$vNomProduit de couleur $vCouleurProduit || Prix : $prixProduit € </a></div><div id='quantiteProdStock'><p>Quantite du produit en stock : $vQuantiteProd</p></div> ";
+            echo "<div id='lienprod'><a href='index.php?action=read&controller=produit&id=$IDurl'>$vNomProduit de couleur $vCouleurProduit || Prix : $prixProduit € </a></div><div id='quantiteProdStock'><p>Quantite du produit en stock : $vQuantiteProd</p></div> ";
             echo "</div>";
         }
         ?>

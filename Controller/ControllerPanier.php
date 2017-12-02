@@ -12,7 +12,7 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
 		}
     
     
-		public static function errorPanier(){
+		public static function error(){
 			$pagetitle="Erreur";
 			$controller="panier";
 			$view="error";
@@ -21,7 +21,7 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
     
 		
 	
-		public static function createdPanier(){
+		public static function created(){
                         $produit_panier= new ModelPanier($_GET['idProduit'],$_SESSION['idUtil'],1);
                         $produit_panier->save();
 			$pagetitle="Produit ajouté";
@@ -33,14 +33,14 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
                 public static function incrementeQuant()
                 {
                     ModelPanier::incrementeQuantite($_GET["idProduit"],$_SESSION['idUtil']);
-                    ControllerPanier::readAllPanier();
+                    ControllerPanier::readAll();
                     
                 }
                 
                 public static function decrementeQuant()
                 {
                     ModelPanier::decrementeQuantite($_GET["idProduit"],$_SESSION['idUtil']);
-                    ControllerPanier::readAllPanier();
+                    ControllerPanier::readAll();
                 }
 	
 		public static function deletedPanier(){
