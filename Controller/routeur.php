@@ -10,37 +10,41 @@
 		$action = $_GET['action']; 
 	}
 	else{
-		$action='Accueil';
+		$action='accueil';
     
+	}  
+        
+        if(isset($_GET['controller'])){
+		$controller = $_GET['controller']; 
 	}
-
-	$tab_prod=get_class_methods('ControllerProduit');
-        $tab_panier= get_class_methods('ControllerPanier');
-        $tab_commande = get_class_methods('ControllerCommande');
-        $tab_utilisateur = get_class_methods('ControllerUtilisateur');
-	// Appel de la méthode statique $action de ControllerProduit
-	if(in_array($action,$tab_prod)){
-		ControllerProduit::$action(); 
-	}
-        else if(in_array($action,$tab_panier))
-        {
-            ControllerPanier::$action();
-        }
-        else if(in_array($action,$tab_commande))
-        {
-            ControllerCommande::$action();
-        }
-        else if(in_array($action,$tab_utilisateur))
-        {
-            ControllerUtilisateur::$action();
-        }
 	else{
-		if($action=="Accueil")
-                {
-                    $pagetitle='Accueil';
-                    $controller='site';
-                    $view='Accueil';
-                    require_once (File::build_path(array('Vues','view.php')));
-                }
-	}
+		$controller='accueil';
+    
+	}  
+        
+        if($action=='accueil'&&$controller=='accueil'){
+            ControllerProduit::accueil();
+        }
+                    
+        else{         
+            $controller_class='Controller'.$controller;
+            $tab_class=get_class_methods($controller_class); 
+            if(class_exists($controller_class)){
+
+                if(in_array($action,$tab_class)){
+                        $controller_class::$action();
+                    }
+                    else{
+                        $controller_class::error();
+                    }
+
+            }
+
+            else{
+                ControllerProduit::accueil();
+            }
+        }
+        
+        
+       
 ?>

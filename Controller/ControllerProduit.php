@@ -66,5 +66,14 @@ require_once (File::build_path(array('Modele','ModelProduit.php'))); // SALUT C 
 				require File::build_path(array("Vues","view.php"));
 			}
 		}
+                
+                public static function accueil(){
+                    
+                    $pagetitle="Accueil";
+                    $controller="site";
+                    $view="Accueil";
+                    require File::build_path(array("Vues","view.php"));
+                }
+                
     }
 ?>
