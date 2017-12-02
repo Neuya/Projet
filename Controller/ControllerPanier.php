@@ -43,7 +43,7 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
                     ControllerPanier::readAll();
                 }
 	
-		public static function deletedPanier(){
+		public static function deleted(){
 			$v = ModelProduit::getProduitById($_GET["idProduit"]);
 			if($v == false){
 				ControllerPanier::error();
