@@ -5,14 +5,14 @@ require_once (File::build_path(array('Modele','ModelCommande.php')));
 		
 		public static function readAll() {
 			$tab_panier = ModelPanier::getAllCommande($_SESSION['idUtil']);
-			$pagetitle="Liste des produits de votre panier";
-			$controller="panier";
+			$pagetitle="Liste des produits de vos commandes";
+			$controller="commande";
 			$view="list";
 			require File::build_path(array("Vues","view.php"));
 		}
     
     
-		public static function errorPanier(){
+		public static function error(){
 			$pagetitle="Erreur";
 			$controller="panier";
 			$view="error";

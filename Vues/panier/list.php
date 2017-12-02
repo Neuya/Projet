@@ -29,5 +29,6 @@ foreach ($tab_panier as $v)
 }
 
 echo "<p>Total de votre panier : $TotalPanier</p>";
+echo "<div class='bouton_cliquable'><a href='index.php?action=create&controller=commande'>Acheter</a>";
 
 ?>
