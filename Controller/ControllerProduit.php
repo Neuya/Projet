@@ -1,6 +1,11 @@
 <?php
 require_once (File::build_path(array('Modele','ModelProduit.php')));
 
+
+
+//SALUT GRAND PEDZ C OIM 
+
+
     class ControllerProduit{
 		
 		public static function readAll() {
