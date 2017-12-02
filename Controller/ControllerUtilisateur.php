@@ -85,7 +85,23 @@ require_once (File::build_path(array('lib','Security.php')));
                     require File::build_path(array("Vues","view.php"));
                 }
                 
-                public static function connected(){}
+                public static function connected(){
+                    if(ModelUtilisateur::checkPassword($_GET['login'],Security::chiffrer($_GET['mdp']))){
+                        session_destroy();
+                        session_start();
+                        $_SESSION['pseudoUtil']=$_GET['login'];
+                        $pagetitle="Gestion de votre compte";
+                        $controller="utilisateur";
+			$view="detail";
+			require File::build_path(array("Vues","view.php"));
+                    }
+                    
+                }
+                
+                public static function deconnect(){
+                    
+                    
+                }
        /* 
         create
         

@@ -115,19 +115,47 @@
 			$req_prep->execute($values);
 		}
                 
-                public function checkPseudo($login){
-                        $rep = Model::$pdo->query("SELECT * FROM Utilisateur WHERE idUtil=$idUtil");
-			$rep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
-			$tab_obj = $rep->fetchAll();
-                        if (empty($tab_obj))
-                             return false;
-			return $tab_obj[0]; 
-                    
+                public static function checkPseudo($login){ //renvoie true si pseudo pas utilisé
+                       
+                          /*  $sql = "SELECT COUNT(pseudoUtil) FROM Utilisateur WHERE pseudoUtil=:login";
+                            // Préparation de la requête
+                            $req_prep = Model::$pdo->prepare($sql);
+
+                            $values = array(
+                                "login" => $login,
+                                
+                            );
+                        	 
+                            $req_prep->execute($values);
+                            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
+                            $quant = $req_prep->fetchAll();
+                            // Attention, si il n'y a pas de résultats, on renvoie false
+                            if ($quant[0]>=1)
+                                return false;
+                            return true;*/
+                            
+                              $rep = Model::$pdo->query("SELECT COUNT(*) AS NbPseudo FROM Utilisateur WHERE pseudoUtil=$login");
+                                $nombre = $rep->fetch();
+                                $rep->closeCursor();
+                                
+                                if($nombre['NbPseudo'] >=1){
+                                    return false;
+                                }
+                                else{
+                                return true;}
                 }
                 
-                public function checkPassword($login,$mot_de_passe_chiffre){
-                    
-                    
+                public static function checkPassword($login,$mot_de_passe_chiffre){
+                        $rep = Model::$pdo->query("SELECT COUNT(*) AS NbPseudo FROM Utilisateur WHERE pseudoUtil=$login AND mdpUtil=$mot_de_passe_chiffre" );
+                                $nombre = $rep->fetch();
+                                $rep->closeCursor();
+                                $check=$nombre['NbPseudo'];
+                                 if($check==1){
+                                     return true;
+                                 }
+                                 else{
+                                     return false;
+                                 }
                 }
                 
                 

@@ -3,7 +3,7 @@
 class Security{
     
     public static function chiffrer($texte_en_clair) {
-        $texte_en_clair=getSeed().$texte_en_clair;
+        $texte_en_clair=Security::getSeed().$texte_en_clair;
         $texte_chiffre = hash('sha256', $texte_en_clair);
         return $texte_chiffre;
     }
@@ -15,7 +15,7 @@ class Security{
 
     private static $seed = 'zeNUIrolbT';
 
-    static public function getSeed() {
+    public static function getSeed() {
        return self::$seed;
     }
     
