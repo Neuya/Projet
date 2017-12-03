@@ -88,7 +88,7 @@ require_once (File::build_path(array('lib','Session.php')));
                 
                
                 public static function connect(){
-                    $pagetitle="Connection";
+                    $pagetitle="Connexion";
                     $controller="site";
                     $view="connect";
                     require File::build_path(array("Vues","view.php"));
