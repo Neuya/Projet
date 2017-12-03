@@ -119,7 +119,10 @@ require_once (File::build_path(array('lib','Session.php')));
                         session_start();
                         $_SESSION['pseudoUtil']='Visiteur';
                         $_SESSION['idUtil']=2;
-                        ControllerProduit::accueil();
+                        $pagetitle="Deconnecté(e)";
+                        $controller="utilisateur";
+                        $view="deconnected";
+                        require File::build_path(array("Vues","view.php"));
                     
                 }
        /* 

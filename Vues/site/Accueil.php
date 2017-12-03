@@ -23,7 +23,7 @@ echo "<p>";
 echo "<a href='index.php?action=readAll&controller=utilisateur' >Acceder à mon compte</a>";
 echo"</p>";
 echo "<p>";
-echo "<a href='index.php?action=readAll&controller=commande'>Consulter mes commandes</a></div>";
+echo "<a href='index.php?action=readAll&controller=commande'>Consulter mes commandes</a>";
 echo"</p>";
 }
 echo"</p>";

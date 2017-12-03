@@ -13,10 +13,14 @@
         require_once (File::build_path(array('Controller','routeur.php')));
         
         
-        if (!isset($_SESSION['pseudoUtil'])) {
+        /*if (!isset($_SESSION['pseudoUtil'])) {
             $_SESSION['pseudoUtil']='Visiteur';
             $_SESSION['idUtil']='2';
-        }
+        }*/
+        
+        $_SESSION['pseudoUtil']='Yabon';
+        $_SESSION['idUtil']='2';
+        
        
  ?>
         

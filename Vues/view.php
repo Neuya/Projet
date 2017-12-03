@@ -28,7 +28,7 @@
                    echo "<span class='loginVisit'><a href='index.php?action=connect&controller=utilisateur'>Se Connecter</a></span>"; 
                    }  
             else {
-                echo "<p class='login'>Bienvenue ". $_SESSION['pseudoUtil'] ."</p>"; 
+                echo "<span class='login'><a href='index.php?action=read&controller=utilisateur'>Bienvenue ".$_SESSION['pseudoUtil']."</a></span>"; 
             }
  ?> 
         </div>
