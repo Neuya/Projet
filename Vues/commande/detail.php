@@ -23,10 +23,10 @@ foreach($tab_commande as $v)
     echo "<p>Nom du produit : $nom de couleur $couleur</p>";
     echo "<p>Cout de base : $prix €</p>";
     echo "<p>Quantite achetée : $quantitA</p>";
-    echo "<p>Prix total : $prixST</p>";
+    echo "<p>Prix total : $prixST €</p>";
     echo "</article>";
 }
 
-echo "<p>Prix global de votre commande : $prixTotal";
+echo "<p>Prix global de votre commande : $prixTotal €";
 
 ?>  

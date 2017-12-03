@@ -27,16 +27,21 @@
 
 .login
 {
-    text-align: center;
+     background-color: #4caf50;
+    font-style: oblique;
+    /* float: right; */
     color: black;
-    margin-right: 20px;
-    font-weight: bold;
-    margin-left: 77%;
-    padding-left: 2em;
-    padding-right: 2em;
-    background-color : white;
+    margin-left: 563px;
 }
 
+.loginVisit a
+{
+      background-color: #4caf50;
+    font-style: oblique;
+    /* float: right; */
+    color: black;
+    margin-left: 563px;
+}
 
 footer{  
     bottom: 0;
@@ -107,8 +112,8 @@ color:black;
 
 #lienprod a:hover{
     background-color: white;
-font-weight:bold;
-color:black;
+    font-weight:bold;
+    color:black;
 }
 
 #retourListProd
@@ -203,6 +208,46 @@ font-weight:bold;
 }
 
 .bouton_cliquable input:hover
+{
+background-color: white;
+font-weight:bold;
+color:black;
+}
+
+
+
+/* ACCUEIL */
+
+#ArticleAcc
+{
+    
+}
+
+#imageaccueil
+{
+    display: inline-block;
+    width: 411px;
+    height: 300px;
+    vertical-align: middle;
+}
+
+.bouton_accueil a
+{
+    background-color: #4CAF50;
+    border: 1px solid white;
+    padding: 7px 80px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    width: 81%;
+    margin-left: 3px;
+    display: inline-block;
+    width: 250px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.bouton_accueil a:hover
 {
 background-color: white;
 font-weight:bold;

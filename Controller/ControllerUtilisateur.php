@@ -101,9 +101,9 @@ require_once (File::build_path(array('lib','Session.php')));
                         $_SESSION['pseudoUtil']=$_GET['login'];
                         $u=ModelUtilisateur::getUtilisateurbyId($_SESSION['pseudoUtil']);
                         $_SESSION['idUtil']=$u->getIdUtilisateur();
-                        $pagetitle="Gestion de votre compte";
+                        $pagetitle="Bienvenue";
                         $controller="utilisateur";
-			$view="detail";
+			$view="connected";
 			require File::build_path(array("Vues","view.php"));
                     }
                     else{
