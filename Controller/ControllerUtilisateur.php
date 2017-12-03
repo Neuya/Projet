@@ -3,6 +3,7 @@
 
 require_once (File::build_path(array('Modele','ModelUtilisateur.php')));
 require_once (File::build_path(array('lib','Security.php')));
+require_once (File::build_path(array('lib','Session.php')));
 
     class ControllerUtilisateur{
     
