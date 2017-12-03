@@ -91,7 +91,7 @@
 		}
                 
                 public static function getUtilisateurId($login){
-			$rep = Model::$pdo->query("SELECT idUtil FROM Utilisateur WHERE pseudoUtil='$login'");
+			$rep = Model::$pdo->query("SELECT idUtil FROM Utilisateur WHERE pseudoUtil=$login");
 			$rep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
 			$tab_obj = $rep->fetchAll();
                         if (empty($tab_obj))
@@ -101,10 +101,9 @@
                 
            
 		public static function deleteUtilisateurById($idUtil){
-			$rep = Model::$pdo->query("DELETE * FROM Utilisateur WHERE idUtil=$idUtil");
+			$rep = Model::$pdo->query("DELETE FROM Utilisateur WHERE idUtil='$idUtil'");
 			$rep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
-			$tab_obj = $rep->fetchAll();
-			return $tab_obj;
+			
 		}
                 
                 

@@ -42,16 +42,20 @@ require_once (File::build_path(array('lib','Session.php')));
 	
 	
 		public static function deleted(){
-			$v = ModelUtilisateur::getUtilisateurById($_GET["id"]);
+			$v = ModelUtilisateur::getUtilisateurById($_SESSION["pseudoUtil"]);
 			if($v == false){
 				ControllerUtilisateur::error();
 			}	//"redirige" vers les erreurs
 			else{
 				ModelUtilisateur::deleteUtilisateurById($_GET["id"]);
-				$pagetitle="utilisateur créée";
+				$pagetitle="Compte supprimé";
 				$controller="utilisateur";
-				$view="created";
+				$view="deleted";
 				require File::build_path(array("Vues","view.php"));
+                                session_destroy();
+                                session_start();
+                                $_SESSION['pseudoUtil']='Visiteur';
+                                $_SESSION['idUtil']=2;
 			}
 		}
                 
@@ -82,6 +86,7 @@ require_once (File::build_path(array('lib','Session.php')));
                 public static function update(){}
                 public static function updated(){}
                 
+               
                 public static function connect(){
                     $pagetitle="Connection";
                     $controller="site";

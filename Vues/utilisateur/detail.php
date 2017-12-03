@@ -6,6 +6,8 @@
             $uPrenom= htmlspecialchars($u->getPrenomUtil());
             $uVille= htmlspecialchars($u->getVilleUtil());
             $uMdp = htmlspecialchars($u->getMdpUtil());
+            $id=$_SESSION['idUtil'];
+            $login=$_SESSION['pseudoUtil'];
             echo '<p> Login : ' . $uLogin . '.</p>';
             echo '<p> Votre Mot de passe : ' . $uMdp .'</p>';
             echo '<p> Votre Nom : ' . $uNom . '</p>';
@@ -14,8 +16,18 @@
             echo '<p> Votre Ville : ' . $uVille . '</p>';
             
             
-          
-				
+             echo "<article>";
+            echo "<div class='infoUtil'>";
+            echo "<div id='lienprod'><a href='index.php?action=update&controller=utilisateur&id=$id'>Mise à jour du compte </a></div>";
+            echo "</div>";
+            echo "</article>";
+            
+            
+              echo "<article>";
+            echo "<div class='suppUtil'>";
+            echo "<div id='lienprod'><a href='index.php?action=deleted&controller=utilisateur&id=$id'>Supprimer le compte </a></div>";
+            echo "</div>";
+            echo "</article>";
            
            /*
             echo "<form method='get' action='index.php'>";
