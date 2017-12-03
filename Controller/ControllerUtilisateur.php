@@ -16,12 +16,15 @@ require_once (File::build_path(array('lib','Security.php')));
 		}
     
 		public static function read() {
-			$v = ModelUtilisateur::getUtilisateurbyId($_GET["id"]);
+			$v = ModelUtilisateur::getUtilisateurbyId($_SESSION["pseudoUtil"]);
 			if($v == false){
 				ControllerUtilisateur::error();
-			}	//"redirige" vers les erreurs
+			}
+                        else if($_SESSION["idUtil"]==2){
+                            
+                        }
 			else{
-				$pagetitle="Détail de utilisateur";
+				$pagetitle="Information de votre compte";
 				$controller="utilisateur";
 				$view="detail";   
 				require File::build_path(array("Vues","view.php"));
@@ -90,16 +93,27 @@ require_once (File::build_path(array('lib','Security.php')));
                         session_destroy();
                         session_start();
                         $_SESSION['pseudoUtil']=$_GET['login'];
+                        $u=ModelUtilisateur::getUtilisateurbyId($_SESSION['pseudoUtil']);
+                        $_SESSION['idUtil']=$u->getIdUtilisateur();
                         $pagetitle="Gestion de votre compte";
                         $controller="utilisateur";
 			$view="detail";
 			require File::build_path(array("Vues","view.php"));
                     }
-                    
+                    else{
+                        ControllerUtilisateur::connect();
+                        
+                    }
+                        
+                
                 }
                 
-                public static function deconnect(){
-                    
+                public static function deconnected(){
+                        session_destroy();
+                        session_start();
+                        $_SESSION['pseudoUtil']='Visiteur';
+                        $_SESSION['idUtil']=2;
+                        ControllerProduit::accueil();
                     
                 }
        /* 

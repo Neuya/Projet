@@ -22,7 +22,7 @@
     
 	}  
         
-        if($action=='accueil'&&$controller=='accueil'){
+        if($action=='accueil' && $controller=='accueil'){
             ControllerProduit::accueil();
         }
                     

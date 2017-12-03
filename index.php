@@ -1,5 +1,7 @@
 <?php 
-session_start();
+    if (!isset($_SESSION['pseudoUtil'])) {
+     session_start();
+    }
 ?>
 
 
@@ -11,9 +13,10 @@ session_start();
         require_once (File::build_path(array('Controller','routeur.php')));
         
         
-        
-        $_SESSION['pseudoUtil']='Rubis';
-        $_SESSION['idUtil']='2';
+        if (!isset($_SESSION['pseudoUtil'])) {
+            $_SESSION['pseudoUtil']='Visiteur';
+            $_SESSION['idUtil']='2';
+        }
        
  ?>
         

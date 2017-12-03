@@ -23,6 +23,7 @@
                 public function getMdpUtil(){
 			return $this->mdpUtil;
 		}
+       
                 public function getPrenomUtil(){
 			return $this->prenomUtil;
                 }
@@ -80,8 +81,17 @@
 		}
 		
                 
-		public static function getUtilisateurbyId($idUtil){
-			$rep = Model::$pdo->query("SELECT * FROM Utilisateur WHERE idUtil=$idUtil");
+		public static function getUtilisateurbyId($login){
+			$rep = Model::$pdo->query("SELECT * FROM Utilisateur WHERE pseudoUtil='$login'");
+			$rep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
+			$tab_obj = $rep->fetchAll();
+                        if (empty($tab_obj))
+                             return false;
+			return $tab_obj[0];
+		}
+                
+                public static function getUtilisateurId($login){
+			$rep = Model::$pdo->query("SELECT idUtil FROM Utilisateur WHERE pseudoUtil='$login'");
 			$rep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
 			$tab_obj = $rep->fetchAll();
                         if (empty($tab_obj))
@@ -146,16 +156,40 @@
                 }
                 
                 public static function checkPassword($login,$mot_de_passe_chiffre){
-                        $rep = Model::$pdo->query("SELECT COUNT(*) AS NbPseudo FROM Utilisateur WHERE pseudoUtil=$login AND mdpUtil=$mot_de_passe_chiffre" );
+                                $rep = Model::$pdo->query("SELECT COUNT(*) AS NbPseudo FROM Utilisateur WHERE pseudoUtil='$login' AND mdpUtil='$mot_de_passe_chiffre'" );
                                 $nombre = $rep->fetch();
                                 $rep->closeCursor();
-                                $check=$nombre['NbPseudo'];
-                                 if($check==1){
+                               
+                                 if($nombre['NbPseudo']==1){
                                      return true;
                                  }
                                  else{
                                      return false;
                                  }
+                                 
+                                 
+                                 /*$sql = "SELECT pseudoUtil,mdpUtil FROM utilisateur WHERE pseudoUtil='$login' AND mdpUtil='$mot_de_passe_chiffre'";
+                                // Préparation de la requête
+                                $req_prep = Model::$pdo->prepare($sql);
+
+                                $values = array(
+                                    "login" => $login,
+                                    "mdp" => $mot_de_passe_chiffre,
+                                    
+                                );
+                                // On donne les valeurs et on exécute la requête	 
+                                $req_prep->execute($values);
+
+                                // On récupère les résultats comme précédemment
+                                $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+                                $tab_log = $req_prep->fetchAll();
+                                // Attention, si il n'y a pas de résultats, on renvoie false
+                                if (tab_log[0]==$login && tab_log[1]==$mot_de_passe_chiffre){
+                                    return true;
+                                }
+                                else{
+                                    return false;
+                                }*/
                 }
                 
                 
