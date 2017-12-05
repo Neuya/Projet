@@ -2,6 +2,7 @@
   overflow: hidden;
   background-color: #333;
   border : 3px solid #696969;
+  font-size:0px;
   
 }
 
@@ -28,7 +29,7 @@
 #Menu a.active:hover
 {
     background-color: #ddd;
-  color: black;     
+    color: black;     
 }
 
 .login{
@@ -38,17 +39,27 @@
 
 .login a
 {
-    background-color: #4caf50;
+background-color: #4caf50;
 font-style: italic;
 float: right;
 width: 260px;
 text-align: center;
-margin-left: 18px;
 }
+
+.deco a
+{
+font-style: italic;
+float: right;
+width: 260px;
+text-align: center;
+
+}
+
+
 
 .loginVisit a
 {
-     background-color: #4caf50;
+    background-color: #4caf50;
     font-style: italic;
     float: right;
     width: 260px;
@@ -193,6 +204,33 @@ color:black;
     padding-bottom:1em;
 }
 
+.bouton_cliquable_panier a
+{
+background-color : #78805A;
+border : 1px solid white;
+padding:7px 80px;
+color:white;
+text-decoration :none;
+font-weight:bold;
+display: inline-block;
+width: 200px;
+}
+
+.bouton_cliquable_panier a:hover
+{
+background-color: white;
+font-weight:bold;
+color:black;
+}
+
+.panier a
+{
+    display:inline-block;
+}
+
+/* BOUTONS */
+
+
 .bouton_cliquable a
 {
 background-color : #4CAF50;
@@ -201,6 +239,8 @@ padding:7px 80px;
 color:white;
 text-decoration :none;
 font-weight:bold;
+display: inline-block;
+width: 330px;
 }
 
 .bouton_cliquable a:hover
@@ -218,6 +258,7 @@ padding:7px 80px;
 color:white;
 text-decoration :none;
 font-weight:bold;
+font-size: 18px;
 }
 
 .bouton_cliquable input:hover

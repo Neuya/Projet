@@ -44,6 +44,14 @@
                 {
                     $this->quantiteProdStock=$quant;
                 }
+                
+                public static function getPrixById($idProduit)
+                {
+                    $sql=Model::$pdo->query("SELECT prixProd FROM Produit WHERE idProduit=$idProduit");
+                    $rep=$sql->fetch();
+                    $sql->closeCursor();
+                    return $rep[0];
+                }
 		
 		
 		//Constructeur

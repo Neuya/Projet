@@ -30,6 +30,14 @@
       $this->quantite=$quantite2;
     }
     
+    public static function getQuantiteById($idUtili,$idProduit)
+    {
+          $rep = Model::$pdo->query("SELECT Quantite FROM Panier WHERE idUtil=$idUtili AND idProduit=$idProduit");
+          $quant=$rep->fetch();
+          $rep->closeCursor();
+          return $quant[0];
+         
+    }
     
     //Constructeur
     public function __construct($idProd = NULL, $idUt = NULL, $quant = NULL){
@@ -50,22 +58,58 @@
     }
 
     public static function deleteProduitById($idProduit,$idUtili){
+      $quant=ModelPanier::getQuantiteById($idUtili, $idProduit);
       $rep = Model::$pdo->query("DELETE FROM Panier WHERE idProduit=$idProduit AND idUtil=$idUtili");
+      $sql = Model::$pdo->query("UPDATE Produit SET quantiteProdStock=quantiteProdStock+$quant WHERE idProduit=$idProduit");
+      $sql->closeCursor();
+      $rep->closeCursor();
 
     }
     
-    public function incrementeQuantite($idProduit,$idUtil)
+    public static function incrementeQuantite($idProduit,$idUtil)
     {
         $rep = Model::$pdo->query("UPDATE Panier SET Quantite=Quantite+1 WHERE idProduit=$idProduit AND idUtil=$idUtil");
+        $sql = Model::$pdo->query("UPDATE Produit SET quantiteProdStock=quantiteProdStock-1 WHERE idProduit=$idProduit");
+        $sql->closeCursor();
+        $rep->closeCursor();
     }
     
-    public function decrementeQuantite($idProduit,$idUtil)
+    public static function decrementeQuantite($idProduit,$idUtil)
     {
+        if(ModelPanier::getQuantiteById($idUtil,$idProduit)=1)
+        {
+            ModelPanier::deleteProduitById($idProduit, $idUtil);
+        }
         $rep = Model::$pdo->query("UPDATE Panier SET Quantite=Quantite-1 WHERE idProduit=$idProduit AND idUtil=$idUtil");
+        $sql = Model::$pdo->query("UPDATE Produit SET quantiteProdStock=quantiteProdStock+1 WHERE idProduit=$idProduit");
+        $sql->closeCursor();
+        $rep->closeCursor();
+    }
+    
+    public static function aDejaProd($idUtili,$idProduit)
+    {
+        $rep= Model::$pdo->query("SELECT idProduit FROM Panier WHERE idUtil=$idUtili AND idProduit=$idProduit");
+        $adeja = $rep->fetch();
+        $rep->closeCursor();
+        if($adeja[0]==0)
+        {
+            return false;
+        }
+        return true;
+    }
+    
+    
+    
+    public static function update($idUtili,$idProduit,$quantiteProd)
+    {
+        $sql = Model::$pdo->query("UPDATE Panier SET Quantite=Quantite+$quantiteProd WHERE idProduit=$idProduit AND idUtil=$idUtili");
+        $sql->closeCursor();
     }
     
     public function save(){
       $sql = "INSERT INTO Panier (idProduit,idUtil,Quantite) VALUES (:idProduit,:idUtil,:quantite)";
+      $sql_prod = Model::$pdo->query("UPDATE Produit SET quantiteProdStock=quantiteProdStock-$this->quantite WHERE idProduit=$this->idProduit");
+      $sql_prod->closeCursor();
       $req_prep = Model::$pdo->prepare($sql);
       $values = array(
         "idProduit" => $this->idProduit,
@@ -73,8 +117,6 @@
         "quantite" => $this->quantite,
       );
       $req_prep->execute($values);
-    }
-    public function update(){
     }
   }
     

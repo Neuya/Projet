@@ -85,6 +85,11 @@ require_once File::build_path(array("Modele","Model.php"));
         return $nombreCom[0];
     }
     
+    public static function enleveStock($idProduit,$quantite)
+    {
+        $sql=Model::$pdo->query("UPDATE Produit SET quantiteProdStock=quantiteProdStock-$quantite WHERE idProduit=$idProduit");
+        $sql->closeCursor();
+    }
     
     
     public function save(){
