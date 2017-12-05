@@ -68,22 +68,35 @@
     
     public static function incrementeQuantite($idProduit,$idUtil)
     {
+        $produit= ModelProduit::getProduitbyId($idProduit);
+        $quantStock=$produit->getQuantiteProdStock();
+        if($quantStock>0)
+        {
         $rep = Model::$pdo->query("UPDATE Panier SET Quantite=Quantite+1 WHERE idProduit=$idProduit AND idUtil=$idUtil");
         $sql = Model::$pdo->query("UPDATE Produit SET quantiteProdStock=quantiteProdStock-1 WHERE idProduit=$idProduit");
         $sql->closeCursor();
         $rep->closeCursor();
+        }
+        else
+        {
+           echo '<script>alert("Il ne reste plus de ce produit en stock!")</script>';
+        }
     }
     
     public static function decrementeQuantite($idProduit,$idUtil)
     {
-        if(ModelPanier::getQuantiteById($idUtil,$idProduit)=1)
+        if(ModelPanier::getQuantiteById($idUtil,$idProduit)==1)
         {
             ModelPanier::deleteProduitById($idProduit, $idUtil);
         }
+        else
+        {
         $rep = Model::$pdo->query("UPDATE Panier SET Quantite=Quantite-1 WHERE idProduit=$idProduit AND idUtil=$idUtil");
+        $rep->closeCursor();
+        }
         $sql = Model::$pdo->query("UPDATE Produit SET quantiteProdStock=quantiteProdStock+1 WHERE idProduit=$idProduit");
         $sql->closeCursor();
-        $rep->closeCursor();
+        
     }
     
     public static function aDejaProd($idUtili,$idProduit)
