@@ -9,8 +9,7 @@
             $vPrix = htmlspecialchars($v->getPrixProd());
             $vPrixTotal = htmlspecialchars($vPrix*$vQuantite);
         
-            echo "<img id='imageproduit' src='http://webinfo.iutmontp.univ-montp2.fr/~rosy/Projet/Projet/Vues/images/$vNomProduit";
-            echo "_$vCouleur.jpg'  alt='un texte'>";
+            echo "<img id='imageproduit' src='http://webinfo.iutmontp.univ-montp2.fr/~rosy/Projet/Projet/Vues/images/$vNomProduit _$vCouleur.jpg'  alt='un texte'>";
             
             
             
@@ -33,7 +32,7 @@
             
             
             echo "<p><div class='bouton_cliquable'><a href='index.php?action=deleted&controller=panier&idProduit=$vIdProduit'>Retirer du panier</a></div></p>";
-            echo "<p><div class='bouton_cliquable'><a href='index.php?action=readAll&controller=produit'>Retour à votre panier</a></div></p>";
+            echo "<p><div class='bouton_cliquable'><a href='index.php?action=readAll&controller=panier'>Retour à votre panier</a></div></p>";
 
             
             ?>

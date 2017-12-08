@@ -25,7 +25,10 @@
             if($vQuantiteProd>0)
             {
             echo "<article>";
+            echo "<img class='imagelist' src='http://webinfo.iutmontp.univ-montp2.fr/~rosy/Projet/Projet/Vues/images/$vNomProduit _$vCouleurProduit.jpg'  alt='un texte'>";
+            
             echo "<div class='listeproduit'>";
+            
             echo "<div id='lienprod'><a href='index.php?action=read&controller=produit&id=$IDurl'>$vNomProduit || Prix : $prixProduit € </a></div><div id='quantiteProdStock'><p>Quantite du produit en stock : $vQuantiteProd</p></div> ";
             echo "<div id='coulprod'>Couleur : $vCouleurProduit</div>";
             echo "</div>";

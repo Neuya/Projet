@@ -116,6 +116,14 @@ font-weight:bold;
 color:black;
 }
 
+.imagelist {
+    width: 10%;
+height: 20%;
+float: left;
+margin-left: 9em;
+border : 1px solid black;
+}
+
 #lienprod
 {
     padding-top: 1em;
@@ -165,13 +173,12 @@ color:black;
 
 #quantiteProdStock p
 {
-    border : 1px solid black;
-    margin-left: 700px;
-    margin-right:100px;
-    background-color:#BBD2E1;
-    color:black;
-
-    width: 450px;
+    border: 1px solid black;
+    margin-left: 33%;
+    margin-right: 100px;
+    background-color: #BBD2E1;
+    color: black;
+    width: 28em;    
 
 }
 
@@ -179,7 +186,9 @@ color:black;
 {
     
     background-color: rgba(240, 255, 247, 0.34);
-    border : 2px solid white;
+    border: 2px solid white;
+    width: 80em;
+    margin-left: 30em;
 }
 
 #quantiteAjout
@@ -196,7 +205,7 @@ color:black;
 width: 530px;
 background-color: #696969;
 color: white;
-margin-left: 36%
+margin-left: 30%
 }
 
 
