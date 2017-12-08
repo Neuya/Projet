@@ -107,6 +107,16 @@
 			$req_prep->execute($values);
 		}
                 
+                
+                public static function findProduit($search)
+                {
+                    $sql = "SELECT * FROM Produit WHERE nomProduit LIKE '%$search%' ORDER BY nomProduit";
+                    $req = Model::$pdo->query($sql);
+                    $req->setFetchMode(PDO::FETCH_CLASS, 'ModelProduit');
+                    $tab_prod = $req->fetchAll();
+                    return $tab_prod;
+                }
+                
 		public function update(){
 		}
 	}

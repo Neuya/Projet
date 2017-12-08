@@ -170,6 +170,7 @@ color:black;
     margin-right:100px;
     background-color:#BBD2E1;
     color:black;
+    width: 450px;
 }
 
 .listeproduit
@@ -184,6 +185,15 @@ color:black;
     width:70px;
     text-align :center;
     padding-left : 1em;
+}
+
+#coulprod
+{
+ border: 2px solid white;
+width: 530px;
+background-color: #696969;
+color: white;
+margin-left: 36%
 }
 
 
