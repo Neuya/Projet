@@ -81,6 +81,7 @@
 		}
 		
                 
+
                 public static function getUtilisateurbyId($login){
 			$rep = Model::$pdo->query("SELECT * FROM Utilisateur WHERE idUtil='$login'");
 			$rep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
@@ -145,9 +146,10 @@
                                     return false;
                                 }
                                 else{
+
                                 return true;
                                 
-                                }
+                            }
                 }
                 
                 public static function checkPassword($login,$mot_de_passe_chiffre){
@@ -162,13 +164,9 @@
                                      return false;
                                  }
                                  
-                                
                 }
                 
-                
-		public function update(){
-                    
-		}
+               
 	
 	}
 		

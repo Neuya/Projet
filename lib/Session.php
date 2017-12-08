@@ -2,6 +2,7 @@
 
 class Session {
     public static function is_user($login) {
+
         return (!empty($_SESSION['pseudoUtil']) && ($_SESSION['pseudoUtil'] == $login));
     }
     
@@ -9,5 +10,6 @@ class Session {
     return (!empty($_SESSION['admin']) && $_SESSION['admin']);
     }
 
+    }
 
-}
+

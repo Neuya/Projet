@@ -17,7 +17,10 @@ require_once (File::build_path(array('lib','Session.php')));
 		}
     
 		public static function read() {
+
 			$v = ModelUtilisateur::getUtilisateurbyId($_SESSION["idUtil"]);
+
+
 			if($v == false){
 				ControllerUtilisateur::error();
 			}
@@ -42,7 +45,9 @@ require_once (File::build_path(array('lib','Session.php')));
 	
 	
 		public static function deleted(){
+
 			$v = ModelUtilisateur::getUtilisateurById($_SESSION["idUtil"]);
+
 			if($v == false){
 				ControllerUtilisateur::error();
 			}	//"redirige" vers les erreurs
@@ -82,7 +87,8 @@ require_once (File::build_path(array('lib','Session.php')));
 				$view="error";
 				require File::build_path(array("Vues","view.php"));
 			}
-		}
+                }
+                
                 public static function update(){
                    
                     $tab= ModelUtilisateur::getUtilisateurbyId($_GET['id']);
@@ -122,6 +128,8 @@ require_once (File::build_path(array('lib','Session.php')));
                      $tab_v=ModelVoiture::getAllVoitures();
                      require(File::build_path(array("view","view.php")));
                 }
+
+               
                 
                
                 public static function connect(){
@@ -136,7 +144,10 @@ require_once (File::build_path(array('lib','Session.php')));
                         session_destroy();
                         session_start();
                         $_SESSION['pseudoUtil']=$_GET['login'];
+
                         $u=ModelUtilisateur::getUtilisateurbyLogin($_SESSION['pseudoUtil']);
+
+                        
                         $_SESSION['idUtil']=$u->getIdUtilisateur();
                         $pagetitle="Bienvenue";
                         $controller="utilisateur";
@@ -144,7 +155,9 @@ require_once (File::build_path(array('lib','Session.php')));
 			require File::build_path(array("Vues","view.php"));
                     }
                     else{
+
                         echo '<script>alert("Adresse email ou mot de passe incorrect")</script>';
+
                         ControllerUtilisateur::connect();
                         
                     }
@@ -163,6 +176,7 @@ require_once (File::build_path(array('lib','Session.php')));
                         require File::build_path(array("Vues","view.php"));
                     
                 }
+
                 
                 public static function accueil(){
                     
@@ -171,6 +185,8 @@ require_once (File::build_path(array('lib','Session.php')));
                     $view="Accueil";
                     require File::build_path(array("Vues","view.php"));
                 }
+
+
        /* 
         create
         

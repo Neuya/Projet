@@ -75,5 +75,19 @@ require_once (File::build_path(array('Modele','ModelProduit.php')));
                     require File::build_path(array("Vues","view.php"));
                 }
                 
+
+                public static function recherche()
+                {
+                    $search = rawurlencode($_GET['search']);
+                    $tab_s = ModelProduit::findProduit($search);
+                    
+                    
+                    $pagetitle="Résultats de votre recherche";
+                    $controller="produit";
+                    $view="search";
+                    require File::build_path(array("Vues","view.php"));
+                }
+                
+
     }
 ?>

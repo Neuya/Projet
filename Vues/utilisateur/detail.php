@@ -1,5 +1,7 @@
 <?php
+
             $u= ModelUtilisateur::getUtilisateurbyLogin($_SESSION['pseudoUtil']);
+
             $uAge= htmlspecialchars($u->getAgeUtil());
             $uNom= htmlspecialchars($u->getNomUtil());
             $uLogin= htmlspecialchars($u->getPseudoUtil());
@@ -16,6 +18,7 @@
             echo '<p> Votre Ville : ' . $uVille . '</p>';
             
             
+
             echo "<article>";
             echo "<div class='infoUtil'>";
                           
@@ -24,15 +27,19 @@
                 }
             
             
+
             echo "</div>";
             echo "</article>";
             
             
+
             echo "<article>";
             echo "<div class='suppUtil'>";
             if(Session::is_user($login)){
                 echo "<div id='lienprod'><a href='index.php?action=deleted&controller=utilisateur&id=$id'>Supprimer le compte </a></div>";
              }
+
+
             echo "</div>";
             echo "</article>";
            
