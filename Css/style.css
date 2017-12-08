@@ -200,6 +200,29 @@ margin-left: 36%
 }
 
 
+/* DETAIL PRODUIT */ 
+
+#imageproduit
+{
+    width: 530px;
+    height: 380px;
+}
+
+#detailprod
+{
+    border: 1px solid white;
+    width: 75em;
+    margin-left: 20em;
+}
+
+#detailprod p
+{
+    border: 1px solid grey;
+    width: 510px;
+    margin-left: 21em;
+}
+
+
 /*PANIER*/
 
 #prodPanier a

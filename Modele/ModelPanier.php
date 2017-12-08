@@ -50,6 +50,14 @@
     
     //Fonctions
     
+    public static function getProduitDuPanier($idProd)
+    {
+        $produit=ModelProduit::getProduitbyId($idProd);
+        return $produit;
+        
+    }
+    
+    
     public static function getAllProduitDuPanier($idUtili){
       $rep = Model::$pdo->query("SELECT idProduit,Quantite FROM Panier WHERE idUtil=$idUtili");
       $rep->setFetchMode(PDO::FETCH_CLASS,'ModelPanier');

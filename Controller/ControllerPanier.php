@@ -10,6 +10,15 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
 			$view="list";
 			require File::build_path(array("Vues","view.php"));
 		}
+                
+                public static function read()
+                {
+                    $prod_panier = ModelPanier::getProduitDuPanier($_GET['id']);
+                    $pagetitle="Détail du produit de votre panier";
+                    $controller="panier";
+                    $view="detail";
+                    require File::build_path(array("Vues","view.php"));
+                }
     
     
 		public static function error(){

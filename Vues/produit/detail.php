@@ -1,14 +1,24 @@
 
         <?php
+            
+        
         
             $vCouleur= htmlspecialchars($v->getCouleur());
             $vNomProduit= htmlspecialchars($v->getNomProduit());
             $vIdProduit= htmlspecialchars($v->getIdProduit());
             $vQuantite = htmlspecialchars($v->getQuantiteProdStock());
-            echo '<p> Couleur du produit ' . $vCouleur . '.</p>';
-            echo '<p> Libellé du produit ' . $vNomProduit . '</p>';
-            echo '<p> Quantité en stock  ' . $vQuantite .'</p>';
+        
+            echo "<img id='imageproduit' src='http://webinfo.iutmontp.univ-montp2.fr/~rosy/Projet/Projet/Vues/images/$vNomProduit";
+            echo "_$vCouleur.jpg'  alt='un texte'>";
             
+            
+            
+            
+            echo "<div id='detailprod'>";
+            echo "<p>$vNomProduit</p>";
+            echo "<p> Couleur : $vCouleur. </p>";
+            echo '<p> Quantité en stock : ' . $vQuantite .' exemplaire(s). </p>';
+            echo "</div>";
             
           
 				
