@@ -54,7 +54,7 @@ require_once (File::build_path(array('Modele','ModelProduit.php')));
 		}
 	
 		public static function created(){
-			$produit = new ModelProduit($_GET['id'],$_GET['nomproduit'],$_GET['couleur'],$_GET['quantite'],$_GET['prix']);
+			$produit = new ModelProduit(NULL,$_GET['nomproduit'],$_GET['couleur'],$_GET['quantite'],$_GET['prix']);
 			$produit->save();
 			$pagetitle="produit créé";
 			$controller="produit";
