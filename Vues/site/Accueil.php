@@ -25,12 +25,14 @@ echo"</p>";
 echo "<p>";
 echo "<a href='index.php?action=readAll&controller=commande'>Consulter mes commandes</a>";
 echo"</p>";
-}
-echo"</p>";
-echo '<img id="imageaccueil" src="http://localhost/Projet/Vues/images/NY.jpg" height="450" width="550"  alt="un texte">';
 echo "<p>";
 echo  "<a href='index.php?action=readAll&controller=panier'>Accèder à mon panier</a>";
 echo"</p>";
+}
+
+echo '<img id="imageaccueil" src="http://webinfo.iutmontp.univ-montp2.fr/~rosy/Projet/Projet/Vues/images/NY.jpg" height="450" width="550"  alt="un texte">';
+
+
 echo "<p>";
 echo "<a href='index.php?action=readAll&controller=produit' >Consulter la liste des produits</a>";
 echo"</p>";

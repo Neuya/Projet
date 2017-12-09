@@ -2,6 +2,7 @@
   overflow: hidden;
   background-color: #333;
   border : 3px solid #696969;
+  font-size:0px;
   
 }
 
@@ -32,7 +33,7 @@
 #Menu a.active:hover
 {
     background-color: #ddd;
-  color: black;     
+    color: black;     
 }
 
 .login{
@@ -42,17 +43,27 @@
 
 .login a
 {
-    background-color: #4caf50;
+background-color: #4caf50;
 font-style: italic;
 float: right;
 width: 260px;
 text-align: center;
-margin-left: 18px;
 }
+
+.deco a
+{
+font-style: italic;
+float: right;
+width: 260px;
+text-align: center;
+
+}
+
+
 
 .loginVisit a
 {
-     background-color: #4caf50;
+    background-color: #4caf50;
     font-style: italic;
     float: right;
     width: 260px;
@@ -109,6 +120,14 @@ font-weight:bold;
 color:black;
 }
 
+.imagelist {
+    width: 10%;
+height: 20%;
+float: left;
+margin-left: 9em;
+border : 1px solid black;
+}
+
 #lienprod
 {
     padding-top: 1em;
@@ -158,18 +177,22 @@ color:black;
 
 #quantiteProdStock p
 {
-    border : 1px solid black;
-    margin-left: 700px;
-    margin-right:100px;
-    background-color:#BBD2E1;
-    color:black;
+    border: 1px solid black;
+    margin-left: 33%;
+    margin-right: 100px;
+    background-color: #BBD2E1;
+    color: black;
+    width: 28em;    
+
 }
 
 .listeproduit
 {
     
     background-color: rgba(240, 255, 247, 0.34);
-    border : 2px solid white;
+    border: 2px solid white;
+    width: 80em;
+    margin-left: 30em;
 }
 
 #quantiteAjout
@@ -177,6 +200,39 @@ color:black;
     width:70px;
     text-align :center;
     padding-left : 1em;
+}
+
+
+#coulprod
+{
+ border: 2px solid white;
+width: 530px;
+background-color: #696969;
+color: white;
+margin-left: 30%
+}
+
+
+/* DETAIL PRODUIT */ 
+
+#imageproduit
+{
+    width: 530px;
+    height: 380px;
+}
+
+#detailprod
+{
+    border: 1px solid white;
+    width: 75em;
+    margin-left: 20em;
+}
+
+#detailprod p
+{
+    border: 1px solid grey;
+    width: 510px;
+    margin-left: 21em;
 }
 
 
@@ -197,6 +253,33 @@ color:black;
     padding-bottom:1em;
 }
 
+.bouton_cliquable_panier a
+{
+background-color : #78805A;
+border : 1px solid white;
+padding:7px 80px;
+color:white;
+text-decoration :none;
+font-weight:bold;
+display: inline-block;
+width: 200px;
+}
+
+.bouton_cliquable_panier a:hover
+{
+background-color: white;
+font-weight:bold;
+color:black;
+}
+
+.panier a
+{
+    display:inline-block;
+}
+
+/* BOUTONS */
+
+
 .bouton_cliquable a
 {
 background-color : #4CAF50;
@@ -205,6 +288,8 @@ padding:7px 80px;
 color:white;
 text-decoration :none;
 font-weight:bold;
+display: inline-block;
+width: 330px;
 }
 
 .bouton_cliquable a:hover
@@ -222,6 +307,7 @@ padding:7px 80px;
 color:white;
 text-decoration :none;
 font-weight:bold;
+font-size: 18px;
 }
 
 .bouton_cliquable input:hover

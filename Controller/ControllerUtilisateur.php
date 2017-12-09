@@ -17,7 +17,10 @@ require_once (File::build_path(array('lib','Session.php')));
 		}
     
 		public static function read() {
-			$v = ModelUtilisateur::getUtilisateurbyId($_SESSION["pseudoUtil"]);
+
+			$v = ModelUtilisateur::getUtilisateurbyId($_SESSION["idUtil"]);
+
+
 			if($v == false){
 				ControllerUtilisateur::error();
 			}
@@ -42,7 +45,9 @@ require_once (File::build_path(array('lib','Session.php')));
 	
 	
 		public static function deleted(){
-			$v = ModelUtilisateur::getUtilisateurById($_SESSION["pseudoUtil"]);
+
+			$v = ModelUtilisateur::getUtilisateurById($_SESSION["idUtil"]);
+
 			if($v == false){
 				ControllerUtilisateur::error();
 			}	//"redirige" vers les erreurs
@@ -82,9 +87,49 @@ require_once (File::build_path(array('lib','Session.php')));
 				$view="error";
 				require File::build_path(array("Vues","view.php"));
 			}
-		}
-                public static function update(){}
-                public static function updated(){}
+                }
+                
+                public static function update(){
+                   
+                    $tab= ModelUtilisateur::getUtilisateurbyId($_GET['id']);
+                    
+                    if($tab == false){ 
+                            echo '<script>alert("Cet Utilisateur n"existe pas)</script>';
+				ControllerUtilisateur::accueil();
+			}	
+                    else{
+                            
+                            $login=$tab->getPseudoUtil();
+                            if(Session::is_user($login)){ 
+                                 $controller='utilisateur';  
+                                 $view='update';
+                                 $pagetitle='Mise à jour du compte';
+                                 
+                                 require(File::build_path(array("Vues","view.php")));
+                            }
+                            else{
+                                
+                                echo '<script>alert("Vous n"avez pas le droit de modifier les informations d"un autre compte)</script>';
+                                ControllerUtilisateur::accueil();
+                            }
+                   }
+            
+                }
+                public static function updated(){
+                    
+                     $controller='utilisateur';  
+                     $view='updated';
+                     $pagetitle='Information du compte modifié';
+                     $v=ModelUtilisateur::getUtilisateurbyLogin($_SESSION['pseudoUtil']);
+                     ModelVoiture::update($v);
+                     $v->setMarque($_GET['marque']);
+                     $v->setImmatriculation($_GET['immat']);
+                     $v->setCouleur($_GET['couleur']);
+                     $tab_v=ModelVoiture::getAllVoitures();
+                     require(File::build_path(array("view","view.php")));
+                }
+
+               
                 
                
                 public static function connect(){
@@ -99,7 +144,10 @@ require_once (File::build_path(array('lib','Session.php')));
                         session_destroy();
                         session_start();
                         $_SESSION['pseudoUtil']=$_GET['login'];
-                        $u=ModelUtilisateur::getUtilisateurbyId($_SESSION['pseudoUtil']);
+
+                        $u=ModelUtilisateur::getUtilisateurbyLogin($_SESSION['pseudoUtil']);
+
+                        
                         $_SESSION['idUtil']=$u->getIdUtilisateur();
                         $pagetitle="Bienvenue";
                         $controller="utilisateur";
@@ -107,6 +155,9 @@ require_once (File::build_path(array('lib','Session.php')));
 			require File::build_path(array("Vues","view.php"));
                     }
                     else{
+
+                        echo '<script>alert("Adresse email ou mot de passe incorrect")</script>';
+
                         ControllerUtilisateur::connect();
                         
                     }
@@ -125,6 +176,17 @@ require_once (File::build_path(array('lib','Session.php')));
                         require File::build_path(array("Vues","view.php"));
                     
                 }
+
+                
+                public static function accueil(){
+                    
+                    $pagetitle="Accueil";
+                    $controller="site";
+                    $view="Accueil";
+                    require File::build_path(array("Vues","view.php"));
+                }
+
+
        /* 
         create
         

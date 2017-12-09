@@ -41,7 +41,7 @@ require_once (File::build_path(array('Modele','ModelCommande.php')));
 		public static function created(){
                         $idCom=ModelCommande::getIdCommandeDeUtil($_SESSION['idUtil']);
                         $v=ModelPanier::getAllProduitDuPanier($_SESSION['idUtil']);
-                        $idCom+1;
+                        $idCom=$idCom+1;
                         foreach ($v as $v_produit_panier)
                         {
                         $quantitePanier = $v_produit_panier->getQuantite();
@@ -49,6 +49,7 @@ require_once (File::build_path(array('Modele','ModelCommande.php')));
                         $produit_commande= new ModelCommande($idCom,$idProduit,$_SESSION['idUtil'],$quantitePanier);
                         $produit_commande->save();
                         $v_produit_panier->deleteProduitById($idProduit,$_SESSION['idUtil']);
+                        ModelCommande::enleveStock($idProduit, $quantitePanier);
                         }
 			$pagetitle="Produits ajoutés a votre commande";
 			$controller="commande";

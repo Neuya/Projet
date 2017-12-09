@@ -81,7 +81,17 @@
 		}
 		
                 
-		public static function getUtilisateurbyId($login){
+
+                public static function getUtilisateurbyId($login){
+			$rep = Model::$pdo->query("SELECT * FROM Utilisateur WHERE idUtil='$login'");
+			$rep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
+			$tab_obj = $rep->fetchAll();
+                        if (empty($tab_obj))
+                             return false;
+			return $tab_obj[0];
+		}
+                
+		public static function getUtilisateurbyLogin($login){
 			$rep = Model::$pdo->query("SELECT * FROM Utilisateur WHERE pseudoUtil='$login'");
 			$rep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
 			$tab_obj = $rep->fetchAll();
@@ -126,24 +136,9 @@
                 
                 public static function checkPseudo($login){ //renvoie true si pseudo pas utilisé
                        
-                          /*  $sql = "SELECT COUNT(pseudoUtil) FROM Utilisateur WHERE pseudoUtil=:login";
-                            // Préparation de la requête
-                            $req_prep = Model::$pdo->prepare($sql);
-
-                            $values = array(
-                                "login" => $login,
-                                
-                            );
-                        	 
-                            $req_prep->execute($values);
-                            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelUtilisateur');
-                            $quant = $req_prep->fetchAll();
-                            // Attention, si il n'y a pas de résultats, on renvoie false
-                            if ($quant[0]>=1)
-                                return false;
-                            return true;*/
+                          
                             
-                              $rep = Model::$pdo->query("SELECT COUNT(*) AS NbPseudo FROM Utilisateur WHERE pseudoUtil=$login");
+                                $rep = Model::$pdo->query("SELECT COUNT(*) AS NbPseudo FROM Utilisateur WHERE pseudoUtil=$login");
                                 $nombre = $rep->fetch();
                                 $rep->closeCursor();
                                 
@@ -151,7 +146,10 @@
                                     return false;
                                 }
                                 else{
-                                return true;}
+
+                                return true;
+                                
+                            }
                 }
                 
                 public static function checkPassword($login,$mot_de_passe_chiffre){
@@ -166,34 +164,9 @@
                                      return false;
                                  }
                                  
-                                 
-                                 /*$sql = "SELECT pseudoUtil,mdpUtil FROM utilisateur WHERE pseudoUtil='$login' AND mdpUtil='$mot_de_passe_chiffre'";
-                                // Préparation de la requête
-                                $req_prep = Model::$pdo->prepare($sql);
-
-                                $values = array(
-                                    "login" => $login,
-                                    "mdp" => $mot_de_passe_chiffre,
-                                    
-                                );
-                                // On donne les valeurs et on exécute la requête	 
-                                $req_prep->execute($values);
-
-                                // On récupère les résultats comme précédemment
-                                $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
-                                $tab_log = $req_prep->fetchAll();
-                                // Attention, si il n'y a pas de résultats, on renvoie false
-                                if (tab_log[0]==$login && tab_log[1]==$mot_de_passe_chiffre){
-                                    return true;
-                                }
-                                else{
-                                    return false;
-                                }*/
                 }
                 
-                
-		public function update(){
-		}
+               
 	
 	}
 		
