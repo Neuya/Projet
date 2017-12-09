@@ -27,6 +27,8 @@ foreach($tab_commande as $v)
     echo "</article>";
 }
 
-echo "<p>Prix global de votre commande : $prixTotal €";
+echo "<p>Prix global de votre commande : $prixTotal €</p>";
 
+
+echo "<p><div class='bouton_cliquable'><a href='index.php?action=readAll&controller=commande'>Retour</a></div></p>";
 ?>  

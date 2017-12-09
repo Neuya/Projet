@@ -10,6 +10,15 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
 			$view="list";
 			require File::build_path(array("Vues","view.php"));
 		}
+                
+                public static function read()
+                {
+                    $prod_panier = ModelPanier::getProduitDuPanier($_GET['id']);
+                    $pagetitle="Détail du produit de votre panier";
+                    $controller="panier";
+                    $view="detail";
+                    require File::build_path(array("Vues","view.php"));
+                }
     
     
 		public static function error(){
@@ -36,7 +45,19 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
 			$controller="panier";
 			$view="created";
 			require File::build_path(array("Vues","view.php"));
-		}
+                }
+                
+                public static function update()
+                {
+                     $idUtili=$_SESSION['idUtil'];
+                     $idProduit=$_GET['idProduit'];
+                     $quantiteProd=$_GET['quantite'];
+                     ModelPanier::update($idUtili,$idProduit,$quantiteProd);
+                     $pagetitle="Produit ajouté";
+                     $controller="panier";
+                     $view="updated";
+                     require File::build_path(array("Vues","view.php"));
+                }
                 
                 public static function incrementeQuant()
                 {

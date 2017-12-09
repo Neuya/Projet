@@ -1,5 +1,7 @@
 <?php
-            $u= ModelUtilisateur::getUtilisateurbyId($_SESSION['pseudoUtil']);
+
+            $u= ModelUtilisateur::getUtilisateurbyLogin($_SESSION['pseudoUtil']);
+
             $uAge= htmlspecialchars($u->getAgeUtil());
             $uNom= htmlspecialchars($u->getNomUtil());
             $uLogin= htmlspecialchars($u->getPseudoUtil());
@@ -16,16 +18,28 @@
             echo '<p> Votre Ville : ' . $uVille . '</p>';
             
             
-             echo "<article>";
+
+            echo "<article>";
             echo "<div class='infoUtil'>";
-            echo "<div id='lienprod'><a href='index.php?action=update&controller=utilisateur&id=$id'>Mise à jour du compte </a></div>";
+                          
+            if(Session::is_user($login)){
+                 echo "<div id='lienprod'><a href='index.php?action=update&controller=utilisateur&id=$id'>Mise à jour du compte </a></div>";
+                }
+            
+            
+
             echo "</div>";
             echo "</article>";
             
             
-              echo "<article>";
+
+            echo "<article>";
             echo "<div class='suppUtil'>";
-            echo "<div id='lienprod'><a href='index.php?action=deleted&controller=utilisateur&id=$id'>Supprimer le compte </a></div>";
+            if(Session::is_user($login)){
+                echo "<div id='lienprod'><a href='index.php?action=deleted&controller=utilisateur&id=$id'>Supprimer le compte </a></div>";
+             }
+
+
             echo "</div>";
             echo "</article>";
            

@@ -44,6 +44,14 @@
                 {
                     $this->quantiteProdStock=$quant;
                 }
+                
+                public static function getPrixById($idProduit)
+                {
+                    $sql=Model::$pdo->query("SELECT prixProd FROM Produit WHERE idProduit=$idProduit");
+                    $rep=$sql->fetch();
+                    $sql->closeCursor();
+                    return $rep[0];
+                }
 		
 		
 		//Constructeur
@@ -99,6 +107,18 @@
 			$req_prep->execute($values);
 		}
                 
+
+                
+                public static function findProduit($search)
+                {
+                    $sql = "SELECT * FROM Produit WHERE nomProduit LIKE '%$search%' ORDER BY nomProduit";
+                    $req = Model::$pdo->query($sql);
+                    $req->setFetchMode(PDO::FETCH_CLASS, 'ModelProduit');
+                    $tab_prod = $req->fetchAll();
+                    return $tab_prod;
+                }
+                
+
 		public function update(){
 		}
 	}
