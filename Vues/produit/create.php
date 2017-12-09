@@ -7,6 +7,7 @@
                            
 				<legend>Ajouter un produit</legend>
                                                  <input type='hidden' name='action' value='created'>
+                                                 <input type='hidden' name='controller' value='produit'>
 					<p>
 						<label for="nom">Nom complet du produit</label> :
 						<input type="text" placeholder="Ex : Stylo" name="nomproduit" id="nom" required/>

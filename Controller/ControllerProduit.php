@@ -54,12 +54,21 @@ require_once (File::build_path(array('Modele','ModelProduit.php')));
 		}
 	
 		public static function created(){
-			$produit = new ModelProduit(NULL,$_GET['nomproduit'],$_GET['couleur'],$_GET['quantite'],$_GET['prix']);
+			
+                        if(Session::is_admin())
+                        {
+                        $produit = new ModelProduit(NULL,$_GET['nomproduit'],$_GET['couleur'],$_GET['quantite'],$_GET['prix']);
 			$produit->save();
-			$pagetitle="produit créé";
+			$pagetitle="Produit créé!";
 			$controller="produit";
 			$view="created";
-			$tab_v = ModelProduit::getAllProduit();
+                        }
+                        else
+                        {
+                            $pagetitle="Oups!";
+                            $controller="site";
+                            $view="notadmin";
+                        }
 			require File::build_path(array("Vues","view.php"));
 		}
                 

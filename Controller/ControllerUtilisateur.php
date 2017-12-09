@@ -182,13 +182,14 @@ require_once (File::build_path(array('lib','Session.php')));
                 public static function connected(){
                     if(ModelUtilisateur::checkPassword($_GET['login'],Security::chiffrer($_GET['mdp']))){
                         $u=ModelUtilisateur::getUtilisateurbyLogin($_SESSION['pseudoUtil']);
-                        if($u->getNonce()==NULL){
+                        
                             session_destroy();
                             session_start();
                             $_SESSION['pseudoUtil']=$_GET['login'];
 
 
                             $_SESSION['idUtil']=$u->getIdUtilisateur();
+                            
                             if($u->getisAdmin()){
                                 $_SESSION['isAdmin']=true;
                             }
@@ -200,17 +201,15 @@ require_once (File::build_path(array('lib','Session.php')));
                             $controller="utilisateur";
                             $view="connected";
                             require File::build_path(array("Vues","view.php"));
-                        }
-                        else{
+                        
+                        
                              echo '<script>alert("Vous navez pas valider votre compte avec votre adresse email")</script>';
 
-                             ControllerUtilisateur::connect();
                             
-                        }
                     }
                     else{
 
-                        echo '<script>alert("Adresse email ou mot de passe incorrect")</script>';
+                        echo '<script>alert("Login ou mot de passe incorrect")</script>';
 
                         ControllerUtilisateur::connect();
                         

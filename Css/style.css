@@ -319,7 +319,7 @@ color:black;
 
 .bouton_admin a
 {
-background-color : #ff0033;
+background-color : #ff4d4d;
 border : 1px solid white;
 padding:7px 80px;
 color:white;
@@ -352,7 +352,7 @@ color:black;
     height: 300px;
     vertical-align: middle;
 }
-
+    
 .bouton_accueil a
 {
     background-color: #4CAF50;

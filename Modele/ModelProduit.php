@@ -56,7 +56,7 @@
 		
 		//Constructeur
 		public function __construct($id = NULL, $nom = NULL, $coul = NULL,$quant = NULL,$prix =  NULL){
-			if (!is_null($id) && !is_null($nom) && !is_null($coul)) {
+			if (!is_null($quant) && !is_null($prix) && !is_null($nom) && !is_null($coul)) {
 				$this->idProduit = $id;
 				$this->nomProduit = $nom;
 				$this->Couleur = $coul;

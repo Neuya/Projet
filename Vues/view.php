@@ -32,8 +32,13 @@
                    echo "<span class='loginVisit'><a href='index.php?action=connect&controller=utilisateur'>Se Connecter</a></span>"; 
                    }  
             else {
+                if (Session::is_admin())
+                {
+                   echo "<span class='login'><a href='index.php?action=read&controller=utilisateur'>Bienvenue ".$_SESSION['pseudoUtil']." (admin)</a></span>";  
+                }
+                else{
                 echo "<span class='login'><a href='index.php?action=read&controller=utilisateur'>Bienvenue ".$_SESSION['pseudoUtil']."</a></span>"; 
-
+                }
 
                 echo "<span class='deco'><a href='index.php?action=deconnected&controller=utilisateur'>Se Déconnecter</a></span>";
 
@@ -43,6 +48,7 @@
 
            <article>
 			<h1><?php echo $pagetitle; ?></h1>
+                        
            </article>
 
    
