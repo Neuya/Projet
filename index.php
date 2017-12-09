@@ -16,6 +16,7 @@
         if (!isset($_SESSION['pseudoUtil'])) {
             $_SESSION['pseudoUtil']='Visiteur';
             $_SESSION['idUtil']='2';
+            $_SESSION['isAdmin']=false;
         }
         
         

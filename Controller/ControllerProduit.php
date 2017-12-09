@@ -37,9 +37,19 @@ require_once (File::build_path(array('Modele','ModelProduit.php')));
 		}
     
 		public static function create(){
+                    
+                        if(Session::is_admin())
+                        {
 			$pagetitle="Formulaire produit";
 			$controller="produit";
 			$view="create";
+                        }
+                        else
+                        {
+                            $pagetitle="Oups!";
+                            $controller="site";
+                            $view="notadmin";
+                        }
 			require File::build_path(array("Vues","view.php"));
 		}
 	
@@ -52,6 +62,26 @@ require_once (File::build_path(array('Modele','ModelProduit.php')));
 			$tab_v = ModelProduit::getAllProduit();
 			require File::build_path(array("Vues","view.php"));
 		}
+                
+                
+                public static function delete()
+                {
+                    if (Session::is_admin())
+                    {
+                    $prod = ModelProduit::getProduitbyId($_GET["id"]);
+                    $vQuantite=$prod->getQuantiteProdStock();
+                    $vNomProduit= $prod->getNomProduit();
+                    $pagetitle="Confirmation";
+                    $controller="produit";
+                    $view="delete";
+                    }
+                    else{
+                            $pagetitle="Oups!";
+                            $controller="site";
+                            $view="notadmin";  
+                    }
+                    require File::build_path(array("Vues","view.php"));
+                }
 	
 		public static function deleted(){
 			$v = ModelProduit::getProduitById($_GET["id"]);
@@ -59,10 +89,13 @@ require_once (File::build_path(array('Modele','ModelProduit.php')));
 				ControllerProduit::error();
 			}	//"redirige" vers les erreurs
 			else{
+                                $prod = ModelProduit::getProduitbyId($_GET["id"]);
+                                $vQuantite=$prod->getQuantiteProdStock();
+                                $vNomProduit= $prod->getNomProduit();
 				ModelProduit::deleteProduitById($_GET["id"]);
-				$pagetitle="produit créée";
+				$pagetitle="produit supprimé";
 				$controller="produit";
-				$view="created";
+				$view="deleted";
 				require File::build_path(array("Vues","view.php"));
 			}
 		}
@@ -78,10 +111,8 @@ require_once (File::build_path(array('Modele','ModelProduit.php')));
 
                 public static function recherche()
                 {
-                    $search = rawurlencode($_GET['search']);
+                    $search = rawurldecode($_GET['search']);
                     $tab_s = ModelProduit::findProduit($search);
-                    
-                    
                     $pagetitle="Résultats de votre recherche";
                     $controller="produit";
                     $view="search";

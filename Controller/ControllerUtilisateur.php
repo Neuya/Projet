@@ -72,7 +72,7 @@ require_once (File::build_path(array('lib','Session.php')));
 		}
 		
 		public static function created(){
-			if($_GET['mdp']===$_GET['mdp2'] && filter_var($_GET['email'],FILTER_VALIDATE_EMAIL)){
+			if($_GET['mdp']===$_GET['mdp2'] /*&& filter_var($_GET['email'],FILTER_VALIDATE_EMAIL)*/){
                                 $mdpChiffrer=Security::chiffrer($_GET['mdp']);
                                 $nonce=Security::generateRandomHex();
 				$utilisateur = new ModelUtilisateur(NULL,$_GET['nom'],$_GET['pseudo'],$mdpChiffrer,$_GET['prenom'],$_GET['age'],$_GET['ville'],0,$nonce);

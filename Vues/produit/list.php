@@ -11,6 +11,13 @@
         echo "</form>";
         echo "</article>";
         
+        if (Session::is_admin())
+        {
+            echo "<article>";
+            echo "<p><div class='bouton_admin'><a href='index.php?action=create&controller=produit'>Ajouter un produit</a></div></p>";
+            echo "</article>";
+        }
+        
 
         
         echo "<p><strong>Pour ajouter un produit à votre  panier veuillez cliquer dessus</strong></p> ";
