@@ -8,6 +8,8 @@
                 private $prenomUtil;
                 private $ageUtil;
                 private $villeUtil;
+                private $isAdmin;
+                private $nonce;
 		
 		
 		//Guetters et Setters
@@ -33,11 +35,16 @@
                 public function getVilleUtil(){
 			return $this->villeUtil;
 		}
-                
+                public function getisAdmin(){
+			return $this->isAdmin;
+		}
+                  public function getNonce(){
+			return $this->nonce;
+		}
                 
                 	
 		public function setIdUtilisateur($IdUtil2){
-			$this->idUtil=$IdUtilisateur2;
+			$this->idUtil=$IdUtil2;
 		}
 		public function setNomUtil($nomUtil2){
 			$this->nomUtil=$nomUtil2;
@@ -57,10 +64,16 @@
                 public function setVilleUtil($ville2){
 			$this->villeUtil=$ville2;
 		}
+                 public function setisAdmin($boolean){
+			$this->villeUtil=$boolean;
+		}
+                 public function setNonceNULL(){
+			$this->villeUtil=NULL;
+		}
 		
 		
 		//Constructeur
-		public function __construct($id = NULL, $nom = NULL, $pseudo = NULL, $mdp = NULL, $prenom = NULL, $age = NULL, $ville = NULL){
+		public function __construct($id = NULL, $nom = NULL, $pseudo = NULL, $mdp = NULL, $prenom = NULL, $age = NULL, $ville = NULL, $isAdmin= NULL, $nonce=NULL){
 			if (!is_null($nom) && !is_null($pseudo) && !is_null($mdp) && !is_null($prenom) && !is_null($age) && !is_null($ville)) {
 				$this->idUtil = $id;
 				$this->nomUtil = $nom;
@@ -69,7 +82,9 @@
 				$this->prenomUtil = $prenom;
 				$this->ageUtil = $age;
                                 $this->villeUtil = $ville;
-			}
+                                $this->isAdmin= $isAdmin;
+                                $this->nonce= $nonce;
+			} 
 		}
 		
 		//Fonctions
@@ -119,7 +134,7 @@
                 
 		//modif le 1/12/17
 		public function save(){
-			$sql = "INSERT INTO Utilisateur (idUtil,nomUtil,prenomUtil,mdpUtil,pseudoUtil,ageUtil,villeUtil) VALUES (:id,:nom,:prenom,:mdp,:pseudo,:age,:ville)";
+			$sql = "INSERT INTO Utilisateur (idUtil,nomUtil,prenomUtil,mdpUtil,pseudoUtil,ageUtil,villeUtil,isAdmin,nonce) VALUES (:id,:nom,:prenom,:mdp,:pseudo,:age,:ville,:isAdmin,:nonce)";
 			$req_prep = Model::$pdo->prepare($sql);
 			$values = array(
                                 "id" => $this->idUtil,
@@ -129,6 +144,8 @@
                                 "pseudo" => $this->pseudoUtil,
 				"age" => $this->ageUtil,
                                 "ville" => $this->villeUtil,
+                                "isAdmin" => $this->isAdmin,
+                                "nonce" => $this->nonce,
                                 
 			);
 			$req_prep->execute($values);
@@ -138,11 +155,11 @@
                        
                           
                             
-                                $rep = Model::$pdo->query("SELECT COUNT(*) AS NbPseudo FROM Utilisateur WHERE pseudoUtil=$login");
+                                $rep = Model::$pdo->query("SELECT COUNT(*) AS NbPseudo FROM Utilisateur WHERE pseudoUtil='$login'");
                                 $nombre = $rep->fetch();
                                 $rep->closeCursor();
                                 
-                                if($nombre['NbPseudo'] >=1){
+                                if($nombre['NbPseudo'] ==1){
                                     return false;
                                 }
                                 else{
@@ -153,21 +170,56 @@
                 }
                 
                 public static function checkPassword($login,$mot_de_passe_chiffre){
-                                $rep = Model::$pdo->query("SELECT COUNT(*) AS NbPseudo FROM Utilisateur WHERE pseudoUtil='$login' AND mdpUtil='$mot_de_passe_chiffre'" );
-                                $nombre = $rep->fetch();
-                                $rep->closeCursor();
-                               
-                                 if($nombre['NbPseudo']==1){
-                                     return true;
-                                 }
-                                 else{
-                                     return false;
-                                 }
-                                 
+                   $rep = Model::$pdo->query("SELECT COUNT(*) AS NbPseudo FROM Utilisateur WHERE pseudoUtil='$login' AND mdpUtil='$mot_de_passe_chiffre'" );
+                    $nombre = $rep->fetch();
+                    $rep->closeCursor();
+
+                    if($nombre['NbPseudo'] == 1){
+                         return true;
+                    }
+                    else{
+                        return false;
+                    }
                 }
+                                 
+              public static function update($login){
+			//check si le pseudo n'existe pas déjà dans la bd
+			
+			if(!(ModelUtilisateur::checkPseudo($login->getPseudoUtil()))){
+				$sql = "UPDATE Utilisateur SET idUtil=:id,pseudoUtil=':pseudo',mdpUtil=':mdp',nomUtil=':nom',prenomUtil=':prenom',ageUtil=:age,villeUtil=':ville',is WHERE idUtil=:id";
+				$req_prep = Model::$pdo->prepare($sql);
+				$values = array(
+					"id" => $login->idUtil,
+					"nom" => $login->nomUtil,
+					"prenom" => $login->prenomUtil,
+					"mdp" => $login->mdpUtil,
+					"pseudo" => $login->pseudoUtil,
+					"age" => $login->ageUtil,
+					"ville" => $login->villeUtil,                 
+				);
+				$req_prep->execute($values);
+			}
+			else{
+				$pagetitle = "error";
+				$controller="utilisateur";
+				$view="error";
+				require File::build_path(array("Vues","view.php"));
+			}
+		}
                 
-               
-	
-	}
+                public static function updateNonce($login){
+                    $sql = "UPDATE Utilisateur SET nonce=:nonce WHERE pseudoUtil=:login";
+                    $req_prep = Model::$pdo->prepare($sql);
+                    $values = array(
+                        "nonce" => NULL,
+                        "login" => $login,
+                    );
+                    $req_prep->execute($values);
+
+                }
+
+
+
+}
 		
 ?>
