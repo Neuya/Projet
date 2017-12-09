@@ -25,13 +25,17 @@
 						<label for="ville">ville</label> :
 						<input type="text" placeholder="Ex : Paris" name="ville" id="ville" required/>
 					</p>
+                                        <p>
+						<label for="email">Adresse email</label> :
+						<input type="text" placeholder="Ex : prenom.nom@gmail.com" name="email" id="email" required/>
+					</p>
 					<p>
 						<label for="mdp">mot de passe</label> :
-						<input type="text" placeholder="Ex : apple" name="mdp" id="mdp" required/>
+						<input type="password" placeholder="Ex : apple" name="mdp" id="mdp" required/>
 					</p>
 					<p>
 						<label for="mdp2">confirmez mot de passe</label> :
-						<input type="text" placeholder=" " name="mdp2" id="mdp2" required/>
+						<input type="password" placeholder=" " name="mdp2" id="mdp2" required/>
 					</p>
 					<p>
 						<input type="submit" value="Envoyer" />

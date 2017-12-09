@@ -72,14 +72,28 @@ require_once (File::build_path(array('lib','Session.php')));
 		}
 		
 		public static function created(){
-			if($_GET['mdp']===$_GET['mdp2'] && filter_var($_GET['email'],FILTER_VALIDATE_EMAIL)){
+			if($_GET['mdp']===$_GET['mdp2'] && filter_var($_GET['email'],FILTER_VALIDATE_EMAIL) && ModelUtilisateur::checkPseudo($_GET['pseudo'])){
                                 $mdpChiffrer=Security::chiffrer($_GET['mdp']);
                                 $nonce=Security::generateRandomHex();
 				$utilisateur = new ModelUtilisateur(NULL,$_GET['nom'],$_GET['pseudo'],$mdpChiffrer,$_GET['prenom'],$_GET['age'],$_GET['ville'],0,$nonce);
 				$utilisateur->save();
-				$pagetitle="votre compte à bien été crée";
+				$pagetitle="Confirmer votre adresse email";
 				$controller="utilisateur";
 				$view="created";
+                                $email=$_GET['email'];
+                            
+                                $sujet = 'Validation Compte';
+                                $message = "<html>"
+                                        . "<head>"
+                                        . "</head>"
+                                        . "<body>"
+                                        . "<b>Inscription envoyée !</b>. Cliquer sur le lien ci-dessous ou copier le dans votre naviguateur pour valider votre compte.<br /><br /><a href=\"http://localhost/ProjetPHP/Projet/index.php?action=validate&controller=utilisateur&email=$email&nonce=$nonce/a></body></html>";
+                                
+                                
+                                $headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
+                                $headers .= 'Content-type: text/html; charset=ISO-8859-1'."\n";
+                                mail($email, $sujet, $message, $headers);
+  
 				require File::build_path(array("Vues","view.php"));
 			}
 			else{
@@ -212,6 +226,10 @@ require_once (File::build_path(array('lib','Session.php')));
                     }
                     else if($_GET['nonce']==$u->getNonce()){
                         $u->setNonceNULL();
+                        $pagetitle="Confirmation réussie";
+                        $controller="utilisateur";
+                        $view="confirmed";
+                        require File::build_path(array("Vues","view.php"));
                     }
                       
                    

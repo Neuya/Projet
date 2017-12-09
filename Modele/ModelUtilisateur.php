@@ -152,9 +152,6 @@
 		}
                 
                 public static function checkPseudo($login){ //renvoie true si pseudo pas utilisé
-                       
-                          
-                            
                                 $rep = Model::$pdo->query("SELECT COUNT(*) AS NbPseudo FROM Utilisateur WHERE pseudoUtil='$login'");
                                 $nombre = $rep->fetch();
                                 $rep->closeCursor();
