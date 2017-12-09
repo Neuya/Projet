@@ -2,6 +2,9 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group/>
+=======
         <group>
 <<<<<<< HEAD
             <file>file:/home/ann2/oziolr/public_html/PHP/Projet/Vues/produit/create.php</file>
@@ -80,5 +83,6 @@
             <file>file:/C:/wamp64/www/ProjetPHP/Projet/Controller/ControllerPanier.php</file>
 >>>>>>> 63ee972ee92377e96cc5aeaaba9a02e167a13b15
         </group>
+>>>>>>> 97b33804af5461e952b4b943809386b3183a95ba
     </open-files>
 </project-private>

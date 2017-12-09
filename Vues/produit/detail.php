@@ -7,6 +7,7 @@
             $vNomProduit= htmlspecialchars($v->getNomProduit());
             $vIdProduit= htmlspecialchars($v->getIdProduit());
             $vQuantite = htmlspecialchars($v->getQuantiteProdStock());
+            $IdUrl = rawurlencode($vIdProduit);
         
           echo "<img id='imageproduit' src='http://webinfo.iutmontp.univ-montp2.fr/~rosy/Projet/Projet/Vues/images/$vNomProduit _$vCouleur.jpg'  alt='un texte'>";
             
@@ -47,7 +48,13 @@
                echo "<p><div class='bouton_cliquable'><a href='index.php?action=connect&controller=utilisateur'>Se connecter</a></div></p>";
            }
             
-            
+           if (Session::is_admin())
+           {    
+            echo "<p><div class='bouton_admin'><a href='index.php?action=update&controller=produit'>Modifier le produit</a></div></p>";
+            echo "<p><div class='bouton_admin'><a href='index.php?action=delete&controller=produit&id=$IdUrl'>Supprimer le produit</a></div></p>";
+           }
+           
+           
             echo "<p><div class='bouton_cliquable'><a href='index.php?action=readAll&controller=produit'>Retour à la liste des produits</a></div></p>";
         ?>
  

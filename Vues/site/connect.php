@@ -11,7 +11,7 @@
 					</p>
 					<p>
 						<label for="mdp">Mot de passe</label> :
-						<input type="text" placeholder="Ex : apple" name="mdp" id="mdp" required/>
+						<input type="password" placeholder="Ex : apple" name="mdp" id="mdp" required/>
 					</p>
                                         <p>
 						<input type="submit" value="Se connecter" />
