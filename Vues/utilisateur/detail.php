@@ -11,11 +11,11 @@
             $id=$_SESSION['idUtil'];
             $login=$_SESSION['pseudoUtil'];
             echo '<p> Login : ' . $uLogin . '.</p>';
-            echo '<p> Votre Mot de passe : ' . $uMdp .'</p>';
             echo '<p> Votre Nom : ' . $uNom . '</p>';
             echo '<p> Votre Prénom : ' . $uPrenom .'</p>';
             echo '<p> Votre Age : ' . $uAge . '.</p>';
             echo '<p> Votre Ville : ' . $uVille . '</p>';
+            echo '<p> Votre adresse email :'.$id.'</p>';
             
             
 

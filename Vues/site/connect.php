@@ -1,5 +1,4 @@
-<html>
-	<body>
+
 		<form method="get" action='index.php'>
 			<fieldset>      
 				<legend>Se Connecter</legend>
@@ -19,5 +18,3 @@
                                       
 			</fieldset> 
 		</form>	
-	</body>
-</html>
