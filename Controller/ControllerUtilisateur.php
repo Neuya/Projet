@@ -216,8 +216,8 @@ require_once (File::build_path(array('lib','Session.php')));
                         ControllerUtilisateur::connect();
                         
                     }
-                        
-                
+  
+                  }
                 }
                 
                 public static function validate(){
@@ -269,6 +269,8 @@ require_once (File::build_path(array('lib','Session.php')));
         
         deleted*/
     }
+    
+                
 
 
 ?>
