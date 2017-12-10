@@ -12,6 +12,7 @@
             
            
             <?php 
+            
                 if($_SESSION['pseudoUtil']=='Visiteur'){ 
 
 

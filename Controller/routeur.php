@@ -5,17 +5,35 @@
         require_once (File::build_path(array('Controller','ControllerCommande.php')));
         require_once (File::build_path(array('Controller','ControllerUtilisateur.php')));
 
+         
+      
+            
+            function myGet($nomvar){
+                    if($_GET[$nomvar]!=NULL){
+                        return $_GET[$nomvar];
+                    }
+                    else if($_POST[$nomvar]!=NULL){
+                        return $_POST[$nomvar];
+                    }
+                    else {
+                        return NULL;
+                    }
+            } 
+        
+         
+       
+        
 	// On recupère l'action passée dans l'URL
-	if(isset($_GET['action'])){
-		$action = $_GET['action']; 
+	if(!is_null(myGet('action'))){
+		$action = myGet('action'); 
 	}
 	else{
 		$action='accueil';
     
 	}  
         
-        if(isset($_GET['controller'])){
-		$controller = $_GET['controller']; 
+        if(!is_null(myGet('controller'))){
+		$controller = myGet('controller'); 
 	}
 	else{
 		$controller='accueil';
@@ -44,5 +62,7 @@
                 ControllerProduit::accueil();
             }
         }
+        
+        
 
 ?>

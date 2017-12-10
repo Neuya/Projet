@@ -17,7 +17,7 @@ require_once (File::build_path(array('Modele','ModelProduit.php')));
 		}
     
 		public static function read() {
-			$v = ModelProduit::getProduitbyId($_GET["id"]);
+			$v = ModelProduit::getProduitbyId(myGet('id'));
 			if($v == false){
 				ControllerProduit::error();
 			}	//"redirige" vers les erreurs
@@ -54,7 +54,7 @@ require_once (File::build_path(array('Modele','ModelProduit.php')));
 		}
 	
 		public static function created(){
-			$produit = new ModelProduit(NULL,$_GET['nomproduit'],$_GET['couleur'],$_GET['quantite'],$_GET['prix']);
+			$produit = new ModelProduit(NULL,myGet('nomproduit'),myGet('couleur'),myGet('quantite'),myGet('prix'));
 			$produit->save();
 			$pagetitle="produit créé";
 			$controller="produit";
@@ -68,7 +68,7 @@ require_once (File::build_path(array('Modele','ModelProduit.php')));
                 {
                     if (Session::is_admin())
                     {
-                    $prod = ModelProduit::getProduitbyId($_GET["id"]);
+                    $prod = ModelProduit::getProduitbyId(myGet('id'));
                     $vQuantite=$prod->getQuantiteProdStock();
                     $vNomProduit= $prod->getNomProduit();
                     $pagetitle="Confirmation";
@@ -84,16 +84,16 @@ require_once (File::build_path(array('Modele','ModelProduit.php')));
                 }
 	
 		public static function deleted(){
-			$v = ModelProduit::getProduitById($_GET["id"]);
+			$v = ModelProduit::getProduitById(myGet('id'));
 			if($v == false){
 				ControllerProduit::error();
 			}	//"redirige" vers les erreurs
 			else{
-                                $prod = ModelProduit::getProduitbyId($_GET["id"]);
+                                $prod = ModelProduit::getProduitbyId(myGet('id'));
                                 $vQuantite=$prod->getQuantiteProdStock();
                                 $vNomProduit= $prod->getNomProduit();
-				ModelProduit::deleteProduitById($_GET["id"]);
-				$pagetitle="produit supprimé";
+				ModelProduit::deleteProduitById(myGet('id'));
+				$pagetitle="produit supprim�";
 				$controller="produit";
 				$view="deleted";
 				require File::build_path(array("Vues","view.php"));
@@ -111,7 +111,7 @@ require_once (File::build_path(array('Modele','ModelProduit.php')));
 
                 public static function recherche()
                 {
-                    $search = rawurldecode($_GET['search']);
+                    $search = rawurldecode(myGet('search'));
                     $tab_s = ModelProduit::findProduit($search);
                     $pagetitle="Résultats de votre recherche";
                     $controller="produit";

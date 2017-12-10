@@ -7,7 +7,7 @@ class Session {
     }
     
     public static function is_admin() {
-    return (!empty($_SESSION['admin']) && $_SESSION['admin']);
+    return (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin']);
     }
 
     }

@@ -13,7 +13,7 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
                 
                 public static function read()
                 {
-                    $prod_panier = ModelPanier::getProduitDuPanier($_GET['id']);
+                    $prod_panier = ModelPanier::getProduitDuPanier(myGet('id'));
                     $pagetitle="Détail du produit de votre panier";
                     $controller="panier";
                     $view="detail";
@@ -30,7 +30,7 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
                 
                 public static function create()
                 {
-                    $v=ModelProduit::getProduitbyId($_GET['idProduit']);
+                    $v=ModelProduit::getProduitbyId(myGet('idProduit'));
                     $pagetitle="Confirmation de l'ajout";
                     $controller="panier";
                     $view="create";
@@ -39,9 +39,9 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
 		
 	
 		public static function created(){
-                        $produit_panier= new ModelPanier($_GET['idProduit'],$_SESSION['idUtil'],$_GET['quantite']);
+                        $produit_panier= new ModelPanier(myGet('idProduit'),$_SESSION['idUtil'],myGet('quantite'));
                         $produit_panier->save();
-			$pagetitle="Produit ajouté";
+			$pagetitle="Produit ajout�";
 			$controller="panier";
 			$view="created";
 			require File::build_path(array("Vues","view.php"));
@@ -50,8 +50,8 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
                 public static function update()
                 {
                      $idUtili=$_SESSION['idUtil'];
-                     $idProduit=$_GET['idProduit'];
-                     $quantiteProd=$_GET['quantite'];
+                     $idProduit=myGet('idProduit');
+                     $quantiteProd=myGet('quantite');
                      ModelPanier::update($idUtili,$idProduit,$quantiteProd);
                      $pagetitle="Produit ajouté";
                      $controller="panier";
@@ -61,24 +61,24 @@ require_once (File::build_path(array('Modele','ModelPanier.php')));
                 
                 public static function incrementeQuant()
                 {
-                    ModelPanier::incrementeQuantite($_GET["idProduit"],$_SESSION['idUtil']);
+                    ModelPanier::incrementeQuantite(myGet('idProduit'),$_SESSION['idUtil']);
                     ControllerPanier::readAll();
                     
                 }
                 
                 public static function decrementeQuant()
                 {
-                    ModelPanier::decrementeQuantite($_GET["idProduit"],$_SESSION['idUtil']);
+                    ModelPanier::decrementeQuantite(myGet('idProduit'),$_SESSION['idUtil']);
                     ControllerPanier::readAll();
                 }
 	
 		public static function deleted(){
-			$v = ModelProduit::getProduitById($_GET["idProduit"]);
+			$v = ModelProduit::getProduitById(myGet('idProduit'));
 			if($v == false){
 				ControllerPanier::error();
 			}	//"redirige" vers les erreurs
 			else{
-				ModelPanier::deleteProduitById($_GET["idProduit"],$_SESSION['idUtil']);
+				ModelPanier::deleteProduitById(myGet('idProduit'),$_SESSION['idUtil']);
 				$pagetitle="Produit enlevé";
 				$controller="panier";
 				$view="deleted";

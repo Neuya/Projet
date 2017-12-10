@@ -3,7 +3,7 @@
 $vCouleur= htmlspecialchars($v->getCouleur());
 $vNomProduit= htmlspecialchars($v->getNomProduit());
 $vIdProduit= htmlspecialchars($v->getIdProduit());
-$vQuantite = $_GET['quantite'];
+$vQuantite = myGet('quantite');
 $vPrixUn=$v->getPrixProd();
 $vPrix= htmlspecialchars($vPrixUn*$vQuantite);
 $idUtili=$_SESSION['idUtil'];

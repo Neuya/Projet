@@ -52,7 +52,7 @@ require_once (File::build_path(array('lib','Session.php')));
 				ControllerUtilisateur::error();
 			}	//"redirige" vers les erreurs
 			else{
-				ModelUtilisateur::deleteUtilisateurById($_GET["id"]);
+				ModelUtilisateur::deleteUtilisateurById(myGet('id'));
 				$pagetitle="Compte supprimé";
 				$controller="utilisateur";
 				$view="deleted";
@@ -72,15 +72,15 @@ require_once (File::build_path(array('lib','Session.php')));
 		}
 		
 		public static function created(){
-			if($_GET['mdp']===$_GET['mdp2'] && filter_var($_GET['email'],FILTER_VALIDATE_EMAIL) && ModelUtilisateur::checkPseudo($_GET['pseudo'])){
-                                $mdpChiffrer=Security::chiffrer($_GET['mdp']);
+			if(myGet('mdp')===myGet('mdp2') && filter_var(myGet('email'),FILTER_VALIDATE_EMAIL) && ModelUtilisateur::checkPseudo(myGet('pseudo'))){
+                                $mdpChiffrer=Security::chiffrer(myGet('mdp'));
                                 $nonce=Security::generateRandomHex();
-				$utilisateur = new ModelUtilisateur(NULL,$_GET['nom'],$_GET['pseudo'],$mdpChiffrer,$_GET['prenom'],$_GET['age'],$_GET['ville'],0,$nonce);
+				$utilisateur = new ModelUtilisateur(NULL,myGet('nom'),myGet('pseudo'),$mdpChiffrer,myGet('prenom'),myGet('age'),myGet('ville'),0,$nonce);
 				$utilisateur->save();
 				$pagetitle="Confirmer votre adresse email";
 				$controller="utilisateur";
 				$view="created";
-                                $email=$_GET['email'];
+                                $email='bob@yopmail.fr';
                             
                                 $sujet = 'Validation Compte';
                                 $message = "<html>"
@@ -106,7 +106,7 @@ require_once (File::build_path(array('lib','Session.php')));
                 
                  public static function update(){
                    
-                    $tab= ModelUtilisateur::getUtilisateurbyId($_GET['id']);
+                    $tab= ModelUtilisateur::getUtilisateurbyId(myGet('id'));
                     
                     if($tab == false){ 
                             echo '<script>alert("Cet Utilisateur nexiste pas")</script>';
@@ -134,12 +134,12 @@ require_once (File::build_path(array('lib','Session.php')));
                 
               public static function updated(){
                     $user = ModelUtilisateur::getUtilisateurbyLogin($_SESSION['pseudoUtil']);
-                    if($_POST['mdp'] == "" & $_POST['mdp2'] =="" ){
-                        $user->setPseudoUtil($_POST['pseudo']);
-                        $user->setNomUtil($_POST['nom']);
-                        $user->setPrenomUtil($_POST['prenom']);
-                        $user->setAgeUtil($_POST['age']);
-                        $user->setVilleUtil($_POST['ville']);
+                    if(myGet('mdp') == "" & myGet('mdp2') =="" ){
+                        $user->setPseudoUtil(myGet('pseudo'));
+                        $user->setNomUtil(myGet('nom'));
+                        $user->setPrenomUtil(myGet('prenom'));
+                        $user->setAgeUtil(myGet('age'));
+                        $user->setVilleUtil(myGet('ville'));
                         echo'-----------1-------------------';
                         ModelUtilisateur::update($user);
                         $pagetitle = "Compte modifié";
@@ -148,14 +148,14 @@ require_once (File::build_path(array('lib','Session.php')));
                         require File::build_path(array("Vues", "view.php"));
                     }
                     else{
-                        if($_POST['mdp'] == $_POST['mdp2']){
+                        if(myGet('mdp') == myGet('mdp2')){
                             echo'-----------12-------------------';
-                            $user->setPseudoUtil($_POST['pseudo']);
-                            $user->setNomUtil($_POST['nom']);
-                            $user->setPrenomUtil($_POST['prenom']);
-                            $user->setAgeUtil($_POST['age']);
-                            $user->setVilleUtil($_POST['ville']);
-                            $user->setMdpUtil($_POST['mdp']);
+                            $user->setPseudoUtil(myGet('pseudo'));
+                            $user->setNomUtil(myGet('nom'));
+                            $user->setPrenomUtil(myGet('prenom'));
+                            $user->setAgeUtil(myGet('age'));
+                            $user->setVilleUtil(myGet('ville'));
+                            $user->setMdpUtil(myGet('mdp'));
                             ModelUtilisateur::update($user);
                             $pagetitle = "Compte modifié";
                             $controller = "utilisateur";
@@ -180,12 +180,12 @@ require_once (File::build_path(array('lib','Session.php')));
                 }
                 
                 public static function connected(){
-                    if(ModelUtilisateur::checkPassword($_GET['login'],Security::chiffrer($_GET['mdp']))){
-                        $u=ModelUtilisateur::getUtilisateurbyLogin($_SESSION['pseudoUtil']);
-                        if($u->getNonce()==NULL){
+                    if(ModelUtilisateur::checkPassword(myGet('login'),Security::chiffrer(myGet('mdp')))){
+                            $u=ModelUtilisateur::getUtilisateurbyLogin(myGet('login'));
+                            if($u->getNonce()==NULL){
                             session_destroy();
                             session_start();
-                            $_SESSION['pseudoUtil']=$_GET['login'];
+                            $_SESSION['pseudoUtil']=myGet('login');
 
 
                             $_SESSION['idUtil']=$u->getIdUtilisateur();
@@ -220,11 +220,11 @@ require_once (File::build_path(array('lib','Session.php')));
                 }
                 
                 public static function validate(){
-                    $u= ModelUtilisateur::getUtilisateurbyLogin($_GET['login']);
+                    $u= ModelUtilisateur::getUtilisateurbyLogin(myGet('login'));
                     if($u==false){
                         ControllerUtilisateur::error();
                     }
-                    else if($_GET['nonce']==$u->getNonce()){
+                    else if(myGet('nonce')==$u->getNonce()){
                         $u->setNonceNULL();
                         $pagetitle="Confirmation réussie";
                         $controller="utilisateur";

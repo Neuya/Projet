@@ -27,7 +27,7 @@
 					</p>
                                         <p>
 						<label for="email">Adresse email</label> :
-						<input type="text" placeholder="Ex : prenom.nom@gmail.com" name="email" id="email" required/>
+						<input type="email" placeholder="Ex : prenom.nom@gmail.com" name="email" id="email" required/>
 					</p>
 					<p>
 						<label for="mdp">mot de passe</label> :

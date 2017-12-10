@@ -13,7 +13,7 @@ require_once (File::build_path(array('Modele','ModelCommande.php')));
     
                 public static function read()
                 {
-                    $idCom=$_GET['id'];
+                    $idCom=myGet('id');
                     $tab_commande = ModelCommande::getAllProduitCommande($idCom, $_SESSION['idUtil']);
                     $pagetitle="Liste des produits de votre commande";
                     $controller="commande";
@@ -60,13 +60,13 @@ require_once (File::build_path(array('Modele','ModelCommande.php')));
                 
 	
 		public static function deleted(){
-			$v = ModelProduit::getProduitById($_GET["idProduit"]);
+			$v = ModelProduit::getProduitById(myGet('idProduit'));
 			if($v == false){
 				ControllerPanier::error();
-			}	//"redirige" vers les erreurs
+			}	                        //"redirige" vers les erreurs
 			else{
-				ModelPanier::deleteProduitById($_GET["idProduit"],$_SESSION['idUtil']);
-				$pagetitle="Produit enlevÃ©";
+				ModelPanier::deleteProduitById(myGet('idProduit'),$_SESSION['idUtil']);
+				$pagetitle="Produit enlevé";
 				$controller="panier";
 				$view="deleted";
 				require File::build_path(array("Vues","view.php"));
